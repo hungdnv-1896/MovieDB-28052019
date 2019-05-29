@@ -34,6 +34,8 @@ PODS:
     - Alamofire (~> 4.8)
     - RxSwift (~> 4.5)
   - RxAtomic (4.4.2)
+  - RxBlocking (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
   - RxDataSources (3.1.0):
@@ -59,6 +61,7 @@ DEPENDENCIES:
   - ObjectMapper (= 3.3)
   - OrderedSet (= 3.0)
   - Reusable (= 4.0.4)
+  - RxBlocking (= 4.5)
   - RxDataSources (= 3.1)
   - SDWebImage (= 5.0)
   - Then (= 2.4)
@@ -81,6 +84,7 @@ SPEC REPOS:
     - Reusable
     - RxAlamofire
     - RxAtomic
+    - RxBlocking
     - RxCocoa
     - RxDataSources
     - RxSwift
@@ -104,6 +108,7 @@ SPEC CHECKSUMS:
   Reusable: 7fc772097df3e5fc86f59d8a7af9708e49b5ff55
   RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
   RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
+  RxBlocking: 79413e4d916f44bb3e113c5b2cc059e36fe58910
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
@@ -111,6 +116,6 @@ SPEC CHECKSUMS:
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
   Validator: bf211c1d71b3f910d230c09c70e62429d0fef63a
 
-PODFILE CHECKSUM: 934ba363de9d9b795237bf1bf359aa4065ebfeac
+PODFILE CHECKSUM: 5c01401dbc9896ebd523226778b622feadcfbdeb
 
 COCOAPODS: 1.6.1

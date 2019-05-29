@@ -19,6 +19,9 @@
 		3821A92E229CC7F1007002B3 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3821A92D229CC7F1007002B3 /* AppNavigator.swift */; };
 		3821A930229CC7FA007002B3 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3821A92F229CC7FA007002B3 /* AppViewModel.swift */; };
 		3821A932229CC80A007002B3 /* AppUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3821A931229CC80A007002B3 /* AppUseCase.swift */; };
+		38294B77229E6FB5007B562E /* AppNavigatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38294B76229E6FB5007B562E /* AppNavigatorMock.swift */; };
+		38294B7A229E6FE0007B562E /* AppUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38294B79229E6FE0007B562E /* AppUseCaseMock.swift */; };
+		38294B7C229E6FF1007B562E /* AppViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38294B7B229E6FF1007B562E /* AppViewModelTests.swift */; };
 		3855018B229CD876009B7BA2 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3855018A229CD876009B7BA2 /* Storyboards.swift */; };
 		3855018D229CE136009B7BA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3855018C229CE135009B7BA2 /* Assets.xcassets */; };
 		38550191229CE81D009B7BA2 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38550190229CE81D009B7BA2 /* MainViewModel.swift */; };
@@ -78,6 +81,9 @@
 		3821A92F229CC7FA007002B3 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		3821A931229CC80A007002B3 /* AppUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUseCase.swift; sourceTree = "<group>"; };
 		3821A933229CC956007002B3 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		38294B76229E6FB5007B562E /* AppNavigatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppNavigatorMock.swift; path = ../AppNavigatorMock.swift; sourceTree = "<group>"; };
+		38294B79229E6FE0007B562E /* AppUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUseCaseMock.swift; sourceTree = "<group>"; };
+		38294B7B229E6FF1007B562E /* AppViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModelTests.swift; sourceTree = "<group>"; };
 		3855018A229CD876009B7BA2 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		3855018C229CE135009B7BA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38550190229CE81D009B7BA2 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -183,6 +189,7 @@
 		3821A908229CC374007002B3 /* MovieDBTests */ = {
 			isa = PBXGroup;
 			children = (
+				38294B75229E6F87007B562E /* Scenes */,
 				3821A909229CC374007002B3 /* MovieDBTests.swift */,
 				3821A90B229CC374007002B3 /* Info.plist */,
 			);
@@ -255,6 +262,26 @@
 				3821A931229CC80A007002B3 /* AppUseCase.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		38294B75229E6F87007B562E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				38294B78229E6FBB007B562E /* App */,
+			);
+			name = Scenes;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		38294B78229E6FBB007B562E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				38294B76229E6FB5007B562E /* AppNavigatorMock.swift */,
+				38294B79229E6FE0007B562E /* AppUseCaseMock.swift */,
+				38294B7B229E6FF1007B562E /* AppViewModelTests.swift */,
+			);
+			name = App;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		38550188229CD81D009B7BA2 /* Main */ = {
@@ -345,6 +372,7 @@
 				3821A901229CC374007002B3 /* Sources */,
 				3821A902229CC374007002B3 /* Frameworks */,
 				3821A903229CC374007002B3 /* Resources */,
+				7DDD189A145D0681904239D0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -490,6 +518,30 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7DDD189A145D0681904239D0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieDBTests/Pods-MovieDBTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieDBTests/Pods-MovieDBTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CA34F029CC0EC1DD1EB53242 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -611,6 +663,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3821A90A229CC374007002B3 /* MovieDBTests.swift in Sources */,
+				38294B7A229E6FE0007B562E /* AppUseCaseMock.swift in Sources */,
+				38294B7C229E6FF1007B562E /* AppViewModelTests.swift in Sources */,
+				38294B77229E6FB5007B562E /* AppNavigatorMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

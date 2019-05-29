@@ -14,14 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var assembler: Assembler = DefaultAssembler()
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
+        window = UIWindow()
         bindViewModel()
         return true
     }
     
     private func bindViewModel() {
-        window = UIWindow()
-        let vm: AppViewModel = assembler.resolve(window: window!)
+        guard let window = window else { return }
+        let vm: AppViewModel = assembler.resolve(window: window)
         let input = AppViewModel.Input(loadTrigger: Driver.just(()))
         let output = vm.transform(input)
         output.toMain
@@ -29,4 +31,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .disposed(by: rx.disposeBag)
     }
 }
-

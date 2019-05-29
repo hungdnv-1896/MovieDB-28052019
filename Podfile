@@ -31,12 +31,11 @@ target 'MovieDB' do
     pod 'MBProgressHUD', '1.1'
     pod 'SDWebImage', '5.0'
     pod 'ActionSheetPicker-3.0', '2.3'
-def test_pods
-    pod 'RxBlocking', '4.5'
-end
+
   target 'MovieDBTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RxBlocking', '4.5'
   end
 
   target 'MovieDBUITests' do
