@@ -16,6 +16,8 @@ protocol FavoriteAssembler {
 extension FavoriteAssembler {
     func resolve(navigationController: UINavigationController) -> FavoriteViewController {
         let vc = FavoriteViewController.instantiate()
+        let favoriteTabbarItem = UITabBarItem(title: "Movies", image: UIImage(named: "movie"), tag: 0)
+        vc.tabBarItem = favoriteTabbarItem
 //        let vm: MoviesViewModel = resolve(navigationController: navigationController)
 //        vc.bindViewModel(to: vm)
         return vc

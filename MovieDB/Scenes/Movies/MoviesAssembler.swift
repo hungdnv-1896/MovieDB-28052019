@@ -16,6 +16,8 @@ protocol MoviesAssembler {
 extension MoviesAssembler {
     func resolve(navigationController: UINavigationController) -> MoviesViewController {
         let vc = MoviesViewController.instantiate()
+        let movieTabbarItem = UITabBarItem(title: "Movies", image: UIImage(named: "movie"), tag: 0)
+        vc.tabBarItem = movieTabbarItem
 //        let vm: MoviesViewModel = resolve(navigationController: navigationController)
 //        vc.bindViewModel(to: vm)
         return vc

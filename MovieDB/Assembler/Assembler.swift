@@ -12,10 +12,7 @@ protocol Assembler: class,
     MainAssembler,
     MoviesAssembler,
     FavoriteAssembler {
-    
 }
 
 final class DefaultAssembler: Assembler {
-    
-    
 }
