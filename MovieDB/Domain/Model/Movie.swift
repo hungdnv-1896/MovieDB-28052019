@@ -12,9 +12,9 @@ struct Movie {
     var id = 0
     var title: String
     var overview: String
-    var poster_path: String
-    var vote_count: Int
-    var backdrop_path: String
+    var posterPath: String
+    var voteCount: Int
+    var backdropPath: String
 }
 
 extension Movie {
@@ -23,9 +23,9 @@ extension Movie {
             id: 0,
             title: "",
             overview: "",
-            poster_path: "",
-            vote_count: 0,
-            backdrop_path: ""
+            posterPath: "",
+            voteCount: 0,
+            backdropPath: ""
         )
     }
 }
@@ -42,10 +42,8 @@ extension Movie: Mappable {
         id <- map["id"]
         title <- map["title"]
         overview <- map["overview"]
-        poster_path <- map["poster_path"]
-        vote_count <- map["vote_count"]
-        backdrop_path <- map["backdrop_path"]
+        posterPath <- map["poster_path"]
+        voteCount <- map["vote_count"]
+        backdropPath <- map["backdrop_path"]
     }
 }
-
-
