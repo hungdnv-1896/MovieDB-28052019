@@ -9,12 +9,12 @@
 import UIKit
 
 protocol MovieRepositoryType {
-    func getMovieList(category: MovieCategoryType,
+    func getMovieList(category: CategotyType,
                       page: Int) -> Observable<PagingInfo<Movie>>
 }
 
 final class MovieRepository: MovieRepositoryType {
-    func getMovieList(category: MovieCategoryType,
+    func getMovieList(category: CategotyType,
                      page: Int) -> Observable<PagingInfo<Movie>> {
         let input = API.GetMovieListInput(category: category, page: page)
         return API.shared.getMovieList(input)
