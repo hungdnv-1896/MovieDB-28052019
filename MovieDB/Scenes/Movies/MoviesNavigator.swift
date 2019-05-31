@@ -8,6 +8,8 @@
 
 protocol MoviesNavigatorType {
     func toMovieCategory()
+    func toSearchMovie()
+    func toMovieDetail()
 }
 
 struct MoviesNavigator: MoviesNavigatorType {
@@ -15,6 +17,14 @@ struct MoviesNavigator: MoviesNavigatorType {
     unowned let navigationController: UINavigationController
     
     func toMovieCategory() {
+        
+    }
+    
+    func toSearchMovie() {
+        
+    }
+    
+    func toMovieDetail() {
         
     }
 }

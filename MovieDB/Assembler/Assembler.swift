@@ -11,7 +11,8 @@ protocol Assembler: class,
     AppAssembler,
     MainAssembler,
     MoviesAssembler,
-    FavoriteAssembler {
+    FavoriteAssembler,
+    RepositoriesAssembler {
 }
 
 final class DefaultAssembler: Assembler {
