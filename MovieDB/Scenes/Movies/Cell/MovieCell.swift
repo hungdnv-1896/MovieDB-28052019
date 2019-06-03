@@ -8,17 +8,13 @@
 
 import UIKit
 
-class MovieCell: UICollectionViewCell, NibReusable {
+final class MovieCell: UICollectionViewCell, NibReusable {
 
     @IBOutlet weak var moviePosterImage: UIImageView!
     
     func bindingCell(_ movie: Movie?) {
-        if let movie = movie {
-            let url = URL(string: API.Urls.baseURLImage + movie.posterPath)
-            moviePosterImage?.sd_setImage(with: url,
-                                          completed: nil)
-        } else {
-            moviePosterImage?.image = nil
-        }
+        guard let movie = movie else { return }
+        let url = URL(string: API.Urls.baseURLImage + movie.posterPath)
+        moviePosterImage?.sd_setImage(with: url, completed: nil)
     }
 }

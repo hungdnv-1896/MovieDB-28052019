@@ -14,34 +14,58 @@ struct MoviesViewModel {
 extension MoviesViewModel: ViewModelType {
     struct Input {
         let loadTrigger: Driver<Void>
+        let selectedCategoryTrigger: Driver<IndexPath>
     }
     
     struct Output {
-        let movieCategoryList: Driver<[CategotyType]>
+        let movieCategoryList: Driver<[CategoryType]>
         let movieBannerList: Driver<[Movie]>
+        let selectedCategory: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
+        let activityIndicator = ActivityIndicator()
+        let errorTracker = ErrorTracker()
         
-        let popularMovieList = useCase.getMovieList(.popular([]))
-            .map { $0.items.map { $0 } }
+        let popularMovieList = input.loadTrigger
+            .flatMapLatest{ _ -> Driver<PagingInfo<Movie>> in
+                self.useCase.getMovieList(.popular([]))
+                    .trackActivity(activityIndicator)
+                    .trackError(errorTracker)
+                    .asDriverOnErrorJustComplete()
+            }
+            .map{ $0.items.map { $0 } }
             .startWith([])
-            .asDriverOnErrorJustComplete()
         
-        let nowPlayingMovieList = useCase.getMovieList(.nowPlaying([]))
-            .map { $0.items.map { $0 } }
+        let nowPlayingMovieList = input.loadTrigger
+            .flatMapLatest{ _ -> Driver<PagingInfo<Movie>> in
+                self.useCase.getMovieList(.nowPlaying([]))
+                    .trackActivity(activityIndicator)
+                    .trackError(errorTracker)
+                    .asDriverOnErrorJustComplete()
+            }
+            .map{ $0.items.map { $0 } }
             .startWith([])
-            .asDriverOnErrorJustComplete()
         
-        let upcomingMovieList = useCase.getMovieList(.upcoming([]))
-            .map { $0.items.map { $0 } }
+        let upcomingMovieList = input.loadTrigger
+            .flatMapLatest{ _ -> Driver<PagingInfo<Movie>> in
+                self.useCase.getMovieList(.upcoming([]))
+                    .trackActivity(activityIndicator)
+                    .trackError(errorTracker)
+                    .asDriverOnErrorJustComplete()
+            }
+            .map{ $0.items.map { $0 } }
             .startWith([])
-            .asDriverOnErrorJustComplete()
         
-        let topRateMovieList = useCase.getMovieList(.topRate([]))
-            .map { $0.items.map { $0 } }
+        let topRateMovieList = input.loadTrigger
+            .flatMapLatest{ _ -> Driver<PagingInfo<Movie>> in
+                self.useCase.getMovieList(.topRate([]))
+                    .trackActivity(activityIndicator)
+                    .trackError(errorTracker)
+                    .asDriverOnErrorJustComplete()
+            }
+            .map{ $0.items.map { $0 } }
             .startWith([])
-            .asDriverOnErrorJustComplete()
         
         let movieBannerList = popularMovieList.asObservable()
             .take(4)
@@ -49,14 +73,30 @@ extension MoviesViewModel: ViewModelType {
         
         let movieCategoryList = Driver
             .combineLatest(popularMovieList, nowPlayingMovieList, upcomingMovieList, topRateMovieList)
-            .map { params -> [CategotyType] in
-                let categoryList: [CategotyType] = [.popular(params.0), .nowPlaying(params.1), .upcoming(params.2), .topRate(params.3)]
+            .map { params -> [CategoryType] in
+                let categoryList: [CategoryType] = [.popular(params.0),
+                                                    .nowPlaying(params.1),
+                                                    .upcoming(params.2),
+                                                    .topRate(params.3)]
                 return categoryList
             }
         
+        let selectedCategory = input.selectedCategoryTrigger
+            .withLatestFrom(movieCategoryList) {
+                return ($0, $1)
+            }
+            .map { (indexPath, movieCategories) in
+                return movieCategories[indexPath.row]
+            }
+            .do(onNext: { (category) in
+                
+            })
+            .mapToVoid()
+        
         return Output(
             movieCategoryList: movieCategoryList,
-            movieBannerList: movieBannerList
+            movieBannerList: movieBannerList,
+            selectedCategory: selectedCategory
         )
     }
 }

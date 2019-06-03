@@ -17,12 +17,12 @@ extension API {
 // MARK: - GetRepoList
 extension API {
     final class GetMovieListInput: APIInput {
-        init(category: CategotyType, page: Int) {
+        init(category: CategoryType, page: Int) {
             let params: JSONDictionary = [
                 "api_key": Keys.APIKey,
                 "page": page
             ]
-            super.init(urlString: API.Urls.getMovieList + category.getUrlString(),
+            super.init(urlString: API.Urls.getMovieList + category.urlString,
                        parameters: params,
                        requestType: .get,
                        requireAccessToken: true)

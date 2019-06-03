@@ -6,35 +6,14 @@
 //  Copyright © 2019 nguyen.van.hungd. All rights reserved.
 //
 
-//enum MovieCategoryType: String {
-//    case popular = "popular"
-//    case nowPlaying = "now_playing"
-//    case upcoming = "upcoming"
-//    case topRate = "top_rated"
-//
-//    func getCategoryTitle() -> String {
-//        var title = ""
-//        switch self {
-//        case .popular:
-//            title = "Popular"
-//        case .nowPlaying:
-//            title = "Now playing"
-//        case .upcoming:
-//            title = "Upcoming"
-//        case .topRate:
-//            title = "Top rate"
-//        }
-//        return title
-//    }
-//}
 
-enum CategotyType {
+enum CategoryType {
     case popular([Movie])
     case nowPlaying([Movie])
     case upcoming([Movie])
     case topRate([Movie])
     
-    func getUrlString() -> String {
+    var urlString:String  {
         switch self {
         case .popular(_):
             return "popular"
@@ -47,7 +26,7 @@ enum CategotyType {
         }
     }
     
-    func getCategoryTitle() -> String {
+    var categoryTitle: String {
         switch self {
         case .popular:
             return "Popular"
@@ -60,7 +39,7 @@ enum CategotyType {
         }
     }
     
-    func getMovies() -> [Movie] {
+    var movies: [Movie] {
         switch self {
         case .popular(let popularMovies):
             return popularMovies

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoviesHeaderView: UIView, NibLoadable {
+final class MoviesHeaderView: UIView, NibLoadable {
     
     @IBOutlet weak var pagerView: FSPagerView!
     
@@ -23,12 +23,14 @@ class MoviesHeaderView: UIView, NibLoadable {
         configView()
     }
     
-    func configView() {
-        self.pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
-        self.pagerView.itemSize = FSPagerView.automaticSize
-        self.pagerView.decelerationDistance = 1
-        self.pagerView.delegate = self
-        self.pagerView.dataSource = self
+    private func configView() {
+        pagerView.do {
+            $0.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
+            $0.itemSize = FSPagerView.automaticSize
+            $0.decelerationDistance = 1
+            $0.delegate = self
+            $0.dataSource = self
+        }
     }
 }
 
@@ -40,15 +42,19 @@ extension MoviesHeaderView: FSPagerViewDataSource, FSPagerViewDelegate {
     public func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         let url = URL(string: API.Urls.baseURLImage + self.movieBannerList[index].backdropPath)
-        cell.imageView?.sd_setImage(with: url, completed: nil)
-        cell.imageView?.contentMode = .scaleAspectFill
-        cell.imageView?.clipsToBounds = true
+        cell.imageView?.do {
+            $0.sd_setImage(with: url, completed: nil)
+            $0.contentMode = .scaleAspectFill
+            $0.clipsToBounds = true
+        }
         return cell
     }
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        pagerView.deselectItem(at: index, animated: true)
-        pagerView.scrollToItem(at: index, animated: true)
+        pagerView.do {
+            $0.deselectItem(at: index, animated: true)
+            $0.scrollToItem(at: index, animated: true)
+        }
     }
 }
 
