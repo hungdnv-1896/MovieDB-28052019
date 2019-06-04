@@ -34,6 +34,7 @@
 		3821A92E229CC7F1007002B3 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3821A92D229CC7F1007002B3 /* AppNavigator.swift */; };
 		3821A930229CC7FA007002B3 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3821A92F229CC7FA007002B3 /* AppViewModel.swift */; };
 		3821A932229CC80A007002B3 /* AppUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3821A931229CC80A007002B3 /* AppUseCase.swift */; };
+		3822571322A61361003B9E7B /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3822571222A61361003B9E7B /* APIKey.swift */; };
 		3828654122A0CE1300AF3C07 /* MoviesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828654022A0CE1300AF3C07 /* MoviesHeaderView.swift */; };
 		3828654322A0CE2300AF3C07 /* MoviesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3828654222A0CE2300AF3C07 /* MoviesHeaderView.xib */; };
 		3828655022A0D68400AF3C07 /* FSPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828654722A0D68300AF3C07 /* FSPagerView.swift */; };
@@ -122,6 +123,7 @@
 		3821A92F229CC7FA007002B3 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		3821A931229CC80A007002B3 /* AppUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUseCase.swift; sourceTree = "<group>"; };
 		3821A933229CC956007002B3 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		3822571222A61361003B9E7B /* APIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		3828654022A0CE1300AF3C07 /* MoviesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesHeaderView.swift; sourceTree = "<group>"; };
 		3828654222A0CE2300AF3C07 /* MoviesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesHeaderView.xib; sourceTree = "<group>"; };
 		3828654722A0D68300AF3C07 /* FSPagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSPagerView.swift; path = Sources/FSPagerView.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 		38EEE2CC22A4F6CC00099797 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				3822571222A61361003B9E7B /* APIKey.swift */,
 				38EEE2CD22A4F6E500099797 /* CategoryType.swift */,
 			);
 			path = Support;
@@ -831,6 +834,7 @@
 				385501A9229D28A3009B7BA2 /* FavoriteViewController.swift in Sources */,
 				381C9D93229FACBA002E8B70 /* UIView+.swift in Sources */,
 				3855019D229D0934009B7BA2 /* MoviesUseCase.swift in Sources */,
+				3822571322A61361003B9E7B /* APIKey.swift in Sources */,
 				381C9D7B229F65CE002E8B70 /* Movie.swift in Sources */,
 				381C9D66229F60DB002E8B70 /* APIService.swift in Sources */,
 				38550191229CE81D009B7BA2 /* MainViewModel.swift in Sources */,
