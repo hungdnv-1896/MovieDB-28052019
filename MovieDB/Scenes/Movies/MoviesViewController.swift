@@ -46,7 +46,7 @@ final class MoviesViewController: UIViewController, BindableType {
     private func configView() {
         self.title = "Movies"
         
-        let rightBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "search"), style: .plain, target: self, action: nil)
+        let rightBarButton = UIBarButtonItem(image: UIImage(named: "search"), style: .plain, target: self, action: nil)
         rightBarButton.tintColor = .black
         navigationItem.rightBarButtonItem = rightBarButton
         
