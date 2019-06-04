@@ -68,6 +68,9 @@ extension MoviesViewModel: ViewModelType {
             .startWith([])
         
         let movieBannerList = popularMovieList.asObservable()
+            .flatMap({ (movies) -> Observable<[Movie]> in
+                return Observable.just(Array(movies.prefix(4)))
+            })
             .asDriverOnErrorJustComplete()
         
         let movieCategoryList = Driver
