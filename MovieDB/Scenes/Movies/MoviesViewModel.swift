@@ -28,43 +28,43 @@ extension MoviesViewModel: ViewModelType {
         let errorTracker = ErrorTracker()
         
         let popularMovieList = input.loadTrigger
-            .flatMapLatest{ _ -> Driver<PagingInfo<Movie>> in
+            .flatMapLatest { _ -> Driver<PagingInfo<Movie>> in
                 self.useCase.getMovieList(.popular([]))
                     .trackActivity(activityIndicator)
                     .trackError(errorTracker)
                     .asDriverOnErrorJustComplete()
             }
-            .map{ $0.items }
+            .map { $0.items }
             .startWith([])
         
         let nowPlayingMovieList = input.loadTrigger
-            .flatMapLatest{ _ -> Driver<PagingInfo<Movie>> in
+            .flatMapLatest { _ -> Driver<PagingInfo<Movie>> in
                 self.useCase.getMovieList(.nowPlaying([]))
                     .trackActivity(activityIndicator)
                     .trackError(errorTracker)
                     .asDriverOnErrorJustComplete()
             }
-            .map{ $0.items }
+            .map { $0.items }
             .startWith([])
         
         let upcomingMovieList = input.loadTrigger
-            .flatMapLatest{ _ -> Driver<PagingInfo<Movie>> in
+            .flatMapLatest { _ -> Driver<PagingInfo<Movie>> in
                 self.useCase.getMovieList(.upcoming([]))
                     .trackActivity(activityIndicator)
                     .trackError(errorTracker)
                     .asDriverOnErrorJustComplete()
             }
-            .map{ $0.items }
+            .map { $0.items }
             .startWith([])
         
         let topRateMovieList = input.loadTrigger
-            .flatMapLatest{ _ -> Driver<PagingInfo<Movie>> in
+            .flatMapLatest { _ -> Driver<PagingInfo<Movie>> in
                 self.useCase.getMovieList(.topRate([]))
                     .trackActivity(activityIndicator)
                     .trackError(errorTracker)
                     .asDriverOnErrorJustComplete()
             }
-            .map{ $0.items }
+            .map { $0.items }
             .startWith([])
         
         let movieBannerList = popularMovieList.asObservable()
@@ -90,9 +90,6 @@ extension MoviesViewModel: ViewModelType {
             .map { (indexPath, movieCategories) in
                 return movieCategories[indexPath.row]
             }
-            .do(onNext: { (category) in
-                
-            })
             .mapToVoid()
         
         return Output(

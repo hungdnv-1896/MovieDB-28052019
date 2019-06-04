@@ -65,6 +65,7 @@ final class MoviesViewController: UIViewController, BindableType {
         )
         
         let output = viewModel.transform(input)
+        
         output.movieCategoryList
             .drive(movies)
             .disposed(by: rx.disposeBag)
@@ -136,7 +137,7 @@ extension MoviesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: MovieCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.bindingCell(categoryList[collectionView.tag].movies[indexPath.row])
+        cell.bindingCell(MovieViewModel(movie: categoryList[collectionView.tag].movies[indexPath.row]))
         return cell
     }
 }
@@ -152,7 +153,6 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        showMovieDetail?(categoryList[collectionView.tag].movies[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

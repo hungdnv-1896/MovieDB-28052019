@@ -12,8 +12,8 @@ final class MovieCell: UICollectionViewCell, NibReusable {
 
     @IBOutlet weak var moviePosterImage: UIImageView!
     
-    func bindingCell(_ movie: Movie?) {
-        guard let movie = movie else { return }
+    func bindingCell(_ movieViewModel: MovieViewModel?) {
+        guard let movie = movieViewModel else { return }
         let url = URL(string: API.Urls.baseURLImage + movie.posterPath)
         moviePosterImage?.sd_setImage(with: url, completed: nil)
     }

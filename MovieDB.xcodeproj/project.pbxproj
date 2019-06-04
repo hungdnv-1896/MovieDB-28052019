@@ -43,6 +43,7 @@
 		3822572B22A62396003B9E7B /* FSPageViewTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3822572322A62396003B9E7B /* FSPageViewTransformer.swift */; };
 		3822572C22A62396003B9E7B /* FSPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3822572422A62396003B9E7B /* FSPageControl.swift */; };
 		3822572F22A62996003B9E7B /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3822572E22A62996003B9E7B /* UIView+.swift */; };
+		3822573122A64ADE003B9E7B /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3822573022A64ADE003B9E7B /* MovieViewModel.swift */; };
 		3828654122A0CE1300AF3C07 /* MoviesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3828654022A0CE1300AF3C07 /* MoviesHeaderView.swift */; };
 		3828654322A0CE2300AF3C07 /* MoviesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3828654222A0CE2300AF3C07 /* MoviesHeaderView.xib */; };
 		38294B77229E6FB5007B562E /* AppNavigatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38294B76229E6FB5007B562E /* AppNavigatorMock.swift */; };
@@ -133,6 +134,7 @@
 		3822572322A62396003B9E7B /* FSPageViewTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageViewTransformer.swift; sourceTree = "<group>"; };
 		3822572422A62396003B9E7B /* FSPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSPageControl.swift; sourceTree = "<group>"; };
 		3822572E22A62996003B9E7B /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		3822573022A64ADE003B9E7B /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		3828654022A0CE1300AF3C07 /* MoviesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesHeaderView.swift; sourceTree = "<group>"; };
 		3828654222A0CE2300AF3C07 /* MoviesHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesHeaderView.xib; sourceTree = "<group>"; };
 		38294B76229E6FB5007B562E /* AppNavigatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppNavigatorMock.swift; path = ../AppNavigatorMock.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				385501A0229D0954009B7BA2 /* MoviesAssembler.swift */,
 				3855019A229D0923009B7BA2 /* MoviesViewController.swift */,
 				385501A4229D097F009B7BA2 /* MoviesViewModel.swift */,
+				3822573022A64ADE003B9E7B /* MovieViewModel.swift */,
 				385501A2229D0974009B7BA2 /* MoviesNavigator.swift */,
 				3855019C229D0934009B7BA2 /* MoviesUseCase.swift */,
 				3828655922A115DF00AF3C07 /* View */,
@@ -820,6 +823,7 @@
 				3855019B229D0923009B7BA2 /* MoviesViewController.swift in Sources */,
 				381C9D83229F6737002E8B70 /* MovieRepository.swift in Sources */,
 				3822572522A62396003B9E7B /* FSPagerViewLayoutAttributes.swift in Sources */,
+				3822573122A64ADE003B9E7B /* MovieViewModel.swift in Sources */,
 				38550193229CE82C009B7BA2 /* MainUseCase.swift in Sources */,
 				381C9D90229FABFA002E8B70 /* MovieCell.swift in Sources */,
 				3821A92E229CC7F1007002B3 /* AppNavigator.swift in Sources */,
