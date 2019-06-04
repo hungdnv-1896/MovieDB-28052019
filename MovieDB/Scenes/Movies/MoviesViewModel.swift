@@ -68,7 +68,6 @@ extension MoviesViewModel: ViewModelType {
             .startWith([])
         
         let movieBannerList = popularMovieList.asObservable()
-            .take(4)
             .asDriverOnErrorJustComplete()
         
         let movieCategoryList = Driver

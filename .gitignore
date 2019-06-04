@@ -49,7 +49,6 @@ playground.xcworkspace
 #
 # Pods/
 Pods/
-MovieDB/Support/APIKey.swift
 
 # Carthage
 #
