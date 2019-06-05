@@ -13,6 +13,6 @@ final class MovieCell: UICollectionViewCell, NibReusable {
     @IBOutlet weak var moviePosterImage: UIImageView!
     
     func bindingCell(_ movieViewModel: MovieViewModel?) {
-        moviePosterImage?.sd_setImage(with: movieViewModel?.posterImageURL, completed: nil)
+        moviePosterImage.sd_setImage(with: movieViewModel?.posterImageURL, completed: nil)
     }
 }

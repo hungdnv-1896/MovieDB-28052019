@@ -29,6 +29,7 @@ final class MoviesViewController: UIViewController, BindableType {
     var categoryList = [CategoryType]()
     
     fileprivate var showAllCategoryTrigger = PublishSubject<IndexPath>()
+    fileprivate var showSearchScreenTrigger = PublishSubject<Void>()
     
     // MARK: - Life Cycle
     
@@ -52,7 +53,7 @@ final class MoviesViewController: UIViewController, BindableType {
     private func configView() {
         self.title = "Movies"
         
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: "search"), style: .plain, target: self, action: nil)
+        let rightBarButton = UIBarButtonItem(image: UIImage(named: "search"), style: .plain, target: self, action: #selector(handleClickSearch))
         rightBarButton.tintColor = .black
         navigationItem.rightBarButtonItem = rightBarButton
         
@@ -64,10 +65,15 @@ final class MoviesViewController: UIViewController, BindableType {
         }
     }
     
+    @objc private func handleClickSearch() {
+        self.showSearchScreenTrigger.onNext(())
+    }
+    
     func bindViewModel() {
         let input = MoviesViewModel.Input(
             loadTrigger: Driver.just(()),
-            selectedCategoryTrigger: showAllCategoryTrigger.asDriverOnErrorJustComplete()
+            selectedCategoryTrigger: showAllCategoryTrigger.asDriverOnErrorJustComplete(),
+            searchMovieTrigger: showSearchScreenTrigger.asDriverOnErrorJustComplete()
         )
         
         let output = viewModel.transform(input)
@@ -81,6 +87,10 @@ final class MoviesViewController: UIViewController, BindableType {
             .disposed(by: rx.disposeBag)
         
         output.selectedCategory
+            .drive()
+            .disposed(by: rx.disposeBag)
+        
+        output.searchMovie
             .drive()
             .disposed(by: rx.disposeBag)
     }

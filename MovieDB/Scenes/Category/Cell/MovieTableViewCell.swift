@@ -14,7 +14,7 @@ final class MovieTableViewCell: UITableViewCell, NibReusable {
     @IBOutlet weak var nameLabel: UILabel!
     
     func bindingCell(_ movieViewModel: MovieViewModel?) {
-        nameLabel.text = movieViewModel?.name
-        posterImage?.sd_setImage(with: movieViewModel?.posterImageURL, completed: nil)
+        nameLabel.text = movieViewModel?.name ?? ""
+        posterImage.sd_setImage(with: movieViewModel?.posterImageURL, completed: nil)
     }
 }

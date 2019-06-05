@@ -12,5 +12,6 @@ extension API {
         static let baseURLImage = "http://image.tmdb.org/t/p/original"
         
         static let getMovieList = baseURL + "/movie/"
+        static let searchMovie = baseURL + "/search/movie"
     }
 }
