@@ -17,11 +17,11 @@ struct MovieViewModel {
         return movie.title
     }
     
-    var posterPath: String {
-        return movie.posterPath
+    var posterImageURL: URL? {
+        return URL(string: API.Urls.baseURLImage + movie.posterPath)
     }
     
-    var backdropPath: String {
-        return movie.backdropPath
+    var backdropImageURL: URL? {
+        return URL(string: API.Urls.baseURLImage + movie.backdropPath)
     }
 }

@@ -21,7 +21,6 @@ final class CategoryCell: UITableViewCell, NibReusable {
     }
     
     private func configCell() {
-        
         collectionView.do {
             $0.register(cellType: MovieCell.self)
             $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
