@@ -18,8 +18,6 @@ extension MoviesAssembler {
         let vc = MoviesViewController.instantiate()
         let movieTabbarItem = UITabBarItem(title: "Movies", image: UIImage(named: "movie"), tag: 0)
         vc.tabBarItem = movieTabbarItem
-        navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.navigationItem.largeTitleDisplayMode = .always
         let vm: MoviesViewModel = resolve(navigationController: navigationController)
         vc.bindViewModel(to: vm)
         return vc

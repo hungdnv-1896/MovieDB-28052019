@@ -7,30 +7,36 @@
 //
 
 protocol CategoryAssemler {
-    func resolve(navigationController: UINavigationController, category: CategoryType) -> CategoryViewController
-    func resolve(navigationController: UINavigationController, category: CategoryType) -> CategoryViewModel
+    func resolve(navigationController: UINavigationController,
+                 category: CategoryType) -> CategoryViewController
+    func resolve(navigationController: UINavigationController,
+                 category: CategoryType) -> CategoryViewModel
     func resolve(navigationController: UINavigationController) -> CategoryNavigatorType
     func resolve() -> CategoryUseCaseType
 }
 
 extension CategoryAssemler {
-    func resolve(navigationController: UINavigationController, category: CategoryType) -> CategoryViewController {
+    func resolve(navigationController: UINavigationController,
+                 category: CategoryType) -> CategoryViewController {
         let categoryVC = CategoryViewController.instantiate()
-        navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.navigationItem.largeTitleDisplayMode = .always
-        let vm: CategoryViewModel = resolve(navigationController: navigationController, category: category)
+        let vm: CategoryViewModel = resolve(navigationController: navigationController,
+                                            category: category)
         categoryVC.bindViewModel(to: vm)
         return categoryVC
     }
     
-    func resolve(navigationController: UINavigationController, category: CategoryType) -> CategoryViewModel {
-        return CategoryViewModel(useCase: resolve(), navigator: resolve(navigationController: navigationController), category: category)
+    func resolve(navigationController: UINavigationController,
+                 category: CategoryType) -> CategoryViewModel {
+        return CategoryViewModel(useCase: resolve(),
+                                 navigator: resolve(navigationController: navigationController),
+                                 category: category)
     }
 }
 
 extension CategoryAssemler where Self: DefaultAssembler {
     func resolve(navigationController: UINavigationController) -> CategoryNavigatorType {
-        return CategoryNavigator(assembler: self, navigationController: navigationController)
+        return CategoryNavigator(assembler: self,
+                                 navigationController: navigationController)
     }
     
     func resolve() -> CategoryUseCaseType {

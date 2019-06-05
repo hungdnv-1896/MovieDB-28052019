@@ -14,9 +14,9 @@ struct CategoryViewModel {
 
 extension CategoryViewModel: ViewModelType {
     struct Input {
-        let loadTrigger: Driver<CategoryType>
-        let reloadTrigger: Driver<CategoryType>
-        let loadMoreTrigger: Driver<CategoryType>
+        let loadTrigger: Driver<Void>
+        let reloadTrigger: Driver<Void>
+        let loadMoreTrigger: Driver<Void>
         let selectMovieTrigger: Driver<IndexPath>
     }
     
@@ -32,12 +32,18 @@ extension CategoryViewModel: ViewModelType {
     }
     
     func transform(_ input: Input) -> Output {
+        let loadTrigger = input.loadTrigger
+            .map { _ in self.category }
+        let reloadTrigger = input.reloadTrigger
+            .withLatestFrom(loadTrigger)
+        let loadMoreTrigger = input.loadMoreTrigger
+            .withLatestFrom(loadTrigger)
         
-        let loadMoreOutput = setupLoadMorePagingWithParam(loadTrigger: input.loadTrigger,
+        let loadMoreOutput = setupLoadMorePagingWithParam(loadTrigger: loadTrigger,
                                                           getItems: useCase.getMovieList,
-                                                          refreshTrigger: input.reloadTrigger,
+                                                          refreshTrigger: reloadTrigger,
                                                           refreshItems: useCase.getMovieList,
-                                                          loadMoreTrigger: input.loadMoreTrigger,
+                                                          loadMoreTrigger: loadMoreTrigger,
                                                           loadMoreItems: useCase.loadMoreMovieList)
         
         let (page, fetchItems, loadError, loading, refreshing, loadingMore) = loadMoreOutput
@@ -48,10 +54,7 @@ extension CategoryViewModel: ViewModelType {
         
         let selectedMovie = input.selectMovieTrigger
             .withLatestFrom(movieList) {
-                return ($0, $1)
-            }
-            .map { (indexPath, movies) in
-                return movies[indexPath.row]
+                return $1[$0.row]
             }
             .do(onNext: { (movie) in
                 // Todo

@@ -9,7 +9,7 @@
 import UIKit
 import Reusable
 
-class CategoryViewController: UIViewController, BindableType {
+final class CategoryViewController: UIViewController, BindableType {
 
     @IBOutlet weak var tableView: RefreshTableView!
     
@@ -20,28 +20,25 @@ class CategoryViewController: UIViewController, BindableType {
         configView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+    }
+    
     private func configView() {
         self.title = viewModel.category.categoryTitle
         tableView.do {
             $0.rowHeight = 150
             $0.register(cellType: MovieTableViewCell.self)
         }
-        tableView.rx
-            .setDelegate(self)
-            .disposed(by: rx.disposeBag)
     }
     
     func bindViewModel() {
-        let loadTrigger = Driver.just(viewModel.category)
-        let reloadTrigger = tableView.loadMoreTopTrigger
-            .withLatestFrom(loadTrigger)
-        let loadMoreTrigger = tableView.loadMoreBottomTrigger
-            .withLatestFrom(loadTrigger)
-        
         let input = CategoryViewModel.Input(
-            loadTrigger: loadTrigger,
-            reloadTrigger: reloadTrigger,
-            loadMoreTrigger: loadMoreTrigger,
+            loadTrigger: Driver.just(()),
+            reloadTrigger: tableView.loadMoreTopTrigger,
+            loadMoreTrigger: tableView.loadMoreBottomTrigger,
             selectMovieTrigger: tableView.rx.itemSelected.asDriver())
         
         let output = viewModel.transform(input)
@@ -52,7 +49,7 @@ class CategoryViewController: UIViewController, BindableType {
                     for: IndexPath(row: index, section: 0),
                     cellType: MovieTableViewCell.self)
                     .then {
-                        $0.bindingCell(movie)
+                        $0.bindingCell(MovieViewModel(movie: movie))
                     }
             }
             .disposed(by: rx.disposeBag)
@@ -89,10 +86,4 @@ class CategoryViewController: UIViewController, BindableType {
 
 extension CategoryViewController: StoryboardSceneBased {
     static var sceneStoryboard = Storyboards.main
-}
-
-extension CategoryViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Todo
-    }
 }

@@ -37,6 +37,12 @@ final class MoviesViewController: UIViewController, BindableType {
         configView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+    }
+    
     deinit {
         logDeinit()
     }
@@ -105,11 +111,13 @@ extension MoviesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: CategoryCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.categoryLabel.text = self.categoryList[indexPath.row].categoryTitle
-        cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
-        cell.showAllAction = {
-            self.showAllCategoryTrigger.onNext(IndexPath(item: indexPath.row, section: 0))
+        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: CategoryCell.self)
+            .then {
+                $0.categoryLabel.text = self.categoryList[indexPath.row].categoryTitle
+                $0.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+                $0.showAllAction = { [weak self] in
+                    self?.showAllCategoryTrigger.onNext(IndexPath(item: indexPath.row, section: 0))
+                }
         }
         return cell
     }
