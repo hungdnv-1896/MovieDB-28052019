@@ -7,7 +7,7 @@
 //
 
 protocol MoviesNavigatorType {
-    func toMovieCategory()
+    func toMovieCategory(category: CategoryType)
     func toSearchMovie()
     func toMovieDetail()
 }
@@ -16,8 +16,9 @@ struct MoviesNavigator: MoviesNavigatorType {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
     
-    func toMovieCategory() {
-        
+    func toMovieCategory(category: CategoryType) {
+        let vc: CategoryViewController = assembler.resolve(navigationController: navigationController, category: category)
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func toSearchMovie() {

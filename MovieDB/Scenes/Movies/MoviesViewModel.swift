@@ -90,6 +90,9 @@ extension MoviesViewModel: ViewModelType {
             .map { (indexPath, movieCategories) in
                 return movieCategories[indexPath.row]
             }
+            .do(onNext: { (category) in
+                self.navigator.toMovieCategory(category: category)
+            })
             .mapToVoid()
         
         return Output(

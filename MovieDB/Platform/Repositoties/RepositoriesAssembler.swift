@@ -14,5 +14,4 @@ extension RepositoriesAssembler where Self: DefaultAssembler {
     func resolve() -> MovieRepositoryType {
         return MovieRepository()
     }
-    
 }

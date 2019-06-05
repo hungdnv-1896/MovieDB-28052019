@@ -73,6 +73,10 @@ final class MoviesViewController: UIViewController, BindableType {
         output.movieBannerList
             .drive(headerView)
             .disposed(by: rx.disposeBag)
+        
+        output.selectedCategory
+            .drive()
+            .disposed(by: rx.disposeBag)
     }
 }
 
@@ -102,7 +106,11 @@ extension MoviesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CategoryCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.categoryLabel.text = self.categoryList[indexPath.row].categoryTitle
         cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+        cell.showAllAction = {
+            self.showAllCategoryTrigger.onNext(IndexPath(item: indexPath.row, section: 0))
+        }
         return cell
     }
 }

@@ -79,5 +79,35 @@
             </objects>
             <point key="canvasLocation" x="-383" y="-694"/>
         </scene>
+        <!--Category View Controller-->
+        <scene sceneID="1SL-XC-IUr">
+            <objects>
+                <viewController storyboardIdentifier="CategoryViewController" id="hcM-bK-qWz" customClass="CategoryViewController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gM6-W5-AKa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qkz-f3-rrw" customClass="RefreshTableView" customModule="MGLoadMore">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ise-UH-SnF" firstAttribute="trailing" secondItem="qkz-f3-rrw" secondAttribute="trailing" id="20A-DQ-Mpb"/>
+                            <constraint firstItem="qkz-f3-rrw" firstAttribute="leading" secondItem="Ise-UH-SnF" secondAttribute="leading" id="Feo-cL-hgf"/>
+                            <constraint firstItem="qkz-f3-rrw" firstAttribute="top" secondItem="Ise-UH-SnF" secondAttribute="top" id="jnl-Tn-FNq"/>
+                            <constraint firstItem="Ise-UH-SnF" firstAttribute="bottom" secondItem="qkz-f3-rrw" secondAttribute="bottom" id="rEd-N5-qUa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ise-UH-SnF"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="qkz-f3-rrw" id="u26-uB-SPw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qAL-2P-wtJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="359" y="-694"/>
+        </scene>
     </scenes>
 </document>
