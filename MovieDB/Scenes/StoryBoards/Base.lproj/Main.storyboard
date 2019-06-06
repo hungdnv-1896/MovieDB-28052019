@@ -109,5 +109,35 @@
             </objects>
             <point key="canvasLocation" x="359" y="-694"/>
         </scene>
+        <!--Search Movie View Controller-->
+        <scene sceneID="qGt-26-Ven">
+            <objects>
+                <viewController storyboardIdentifier="SearchMovieViewController" id="6Af-vQ-cE9" customClass="SearchMovieViewController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qNQ-yA-oJV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tdw-xI-bVk" customClass="RefreshTableView" customModule="MGLoadMore">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zef-am-Tcd" firstAttribute="bottom" secondItem="Tdw-xI-bVk" secondAttribute="bottom" id="Bid-Qo-RYg"/>
+                            <constraint firstItem="Tdw-xI-bVk" firstAttribute="top" secondItem="Zef-am-Tcd" secondAttribute="top" id="KL3-60-8ev"/>
+                            <constraint firstItem="Tdw-xI-bVk" firstAttribute="leading" secondItem="Zef-am-Tcd" secondAttribute="leading" id="Rgy-71-L8M"/>
+                            <constraint firstItem="Zef-am-Tcd" firstAttribute="trailing" secondItem="Tdw-xI-bVk" secondAttribute="trailing" id="xNK-p6-ocp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zef-am-Tcd"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Tdw-xI-bVk" id="xXf-X4-Pfa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f7w-bo-vur" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1083" y="-692"/>
+        </scene>
     </scenes>
 </document>

@@ -1,19 +1,22 @@
 //
-//  CategoryViewController.swift
+//  SearchMovieViewController.swift
 //  MovieDB
 //
-//  Created by Nguyen Hung on 6/1/19.
+//  Created by nguyen.van.hungd on 6/4/19.
 //  Copyright © 2019 nguyen.van.hungd. All rights reserved.
 //
 
 import UIKit
-import Reusable
 
-final class CategoryViewController: UIViewController, BindableType {
+final class SearchMovieViewController: UIViewController, BindableType {
 
     @IBOutlet weak var tableView: RefreshTableView!
     
-    var viewModel: CategoryViewModel!
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var viewModel: SearchMovieViewModel!
+    var searchTerms = ""
+    var searchWasCancelled = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +31,26 @@ final class CategoryViewController: UIViewController, BindableType {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.searchController?.isActive = false
+    }
+    
     private func configView() {
-        self.title = viewModel.category.categoryTitle
+        self.do {
+            $0.definesPresentationContext = true
+            $0.title = "Search Movie"
+        }
+        
+        self.searchController.do {
+            $0.searchBar.delegate = self
+            $0.searchBar.placeholder = "Enter keyword"
+        }
+        navigationItem.do {
+            $0.searchController = searchController
+            $0.hidesSearchBarWhenScrolling = false
+            $0.searchController?.obscuresBackgroundDuringPresentation = false
+        }
         tableView.do {
             $0.rowHeight = 150
             $0.register(cellType: MovieTableViewCell.self)
@@ -37,11 +58,17 @@ final class CategoryViewController: UIViewController, BindableType {
     }
     
     func bindViewModel() {
-        let input = CategoryViewModel.Input(
-            loadTrigger: Driver.just(()),
+        let loadTrigger = searchController.searchBar.rx.text.orEmpty
+            .asDriver()
+            .throttle(0.5)
+            .distinctUntilChanged()
+        
+        let input = SearchMovieViewModel.Input(
+            loadTrigger: loadTrigger,
             reloadTrigger: tableView.loadMoreTopTrigger,
             loadMoreTrigger: tableView.loadMoreBottomTrigger,
-            selectMovieTrigger: tableView.rx.itemSelected.asDriver())
+            selectMovieTrigger: tableView.rx.itemSelected.asDriver()
+        )
         
         let output = viewModel.transform(input)
         
@@ -59,33 +86,53 @@ final class CategoryViewController: UIViewController, BindableType {
         output.error
             .drive(rx.error)
             .disposed(by: rx.disposeBag)
-        
+
         output.loading
             .drive(rx.isLoading)
             .disposed(by: rx.disposeBag)
-        
+
         output.refreshing
             .drive(tableView.loadingMoreTop)
             .disposed(by: rx.disposeBag)
-        
+
         output.loadingMore
             .drive(tableView.loadingMoreBottom)
             .disposed(by: rx.disposeBag)
-        
+
         output.fetchItems
             .drive()
             .disposed(by: rx.disposeBag)
-        
+
         output.selectedMovie
             .drive()
             .disposed(by: rx.disposeBag)
-        
+
         output.isEmptyData
             .drive(tableView.isEmptyData)
             .disposed(by: rx.disposeBag)
     }
 }
 
-extension CategoryViewController: StoryboardSceneBased {
+extension SearchMovieViewController: StoryboardSceneBased {
     static var sceneStoryboard = Storyboards.main
+}
+
+extension SearchMovieViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchWasCancelled = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchTerms = searchBar.text ?? " "
+        searchWasCancelled = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if searchWasCancelled {
+            searchBar.text = self.searchTerms
+        } else {
+            searchTerms = searchBar.text ?? " "
+        }
+    }
 }

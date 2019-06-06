@@ -13,7 +13,8 @@ protocol Assembler: class,
     MoviesAssembler,
     FavoriteAssembler,
     RepositoriesAssembler,
-    CategoryAssemler {
+    CategoryAssemler,
+    SearchMovieAssemler {
 }
 
 final class DefaultAssembler: Assembler {

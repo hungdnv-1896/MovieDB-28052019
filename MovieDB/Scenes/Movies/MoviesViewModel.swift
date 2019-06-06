@@ -15,12 +15,14 @@ extension MoviesViewModel: ViewModelType {
     struct Input {
         let loadTrigger: Driver<Void>
         let selectedCategoryTrigger: Driver<IndexPath>
+        let searchMovieTrigger: Driver<Void>
     }
     
     struct Output {
         let movieCategoryList: Driver<[CategoryType]>
         let movieBannerList: Driver<[Movie]>
         let selectedCategory: Driver<Void>
+        let searchMovie: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -95,10 +97,17 @@ extension MoviesViewModel: ViewModelType {
             })
             .mapToVoid()
         
+        let searchMovie = input.searchMovieTrigger
+            .do(onNext: { (category) in
+                self.navigator.toSearchMovie()
+            })
+            .mapToVoid()
+        
         return Output(
             movieCategoryList: movieCategoryList,
             movieBannerList: movieBannerList,
-            selectedCategory: selectedCategory
+            selectedCategory: selectedCategory,
+            searchMovie: searchMovie
         )
     }
 }

@@ -11,6 +11,9 @@ import UIKit
 protocol MovieRepositoryType {
     func getMovieList(category: CategoryType,
                       page: Int) -> Observable<PagingInfo<Movie>>
+    
+    func searchMovie(key: String,
+                     page: Int) -> Observable<PagingInfo<Movie>>
 }
 
 final class MovieRepository: MovieRepositoryType {
@@ -24,5 +27,17 @@ final class MovieRepository: MovieRepositoryType {
                 }
                 return PagingInfo<Movie>(page: page, items: movies)
         }
+    }
+    
+    func searchMovie(key: String,
+                     page: Int) -> Observable<PagingInfo<Movie>> {
+        let input = API.SearchMovieListInput(keySearch: key, page: page)
+        return API.shared.searchMovieList(input)
+            .map { output in
+                guard let movies = output.movies else {
+                    throw APIInvalidResponseError()
+                }
+                return PagingInfo<Movie>(page: page, items: movies)
+            }
     }
 }
