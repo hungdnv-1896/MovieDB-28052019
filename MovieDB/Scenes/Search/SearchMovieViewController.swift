@@ -31,10 +31,6 @@ final class SearchMovieViewController: UIViewController, BindableType {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationItem.searchController?.isActive = false
@@ -66,22 +62,13 @@ final class SearchMovieViewController: UIViewController, BindableType {
             .asDriver()
             .throttle(0.5)
             .distinctUntilChanged()
-            .startWith(" ")
-            .filter { !$0.isEmpty }
-            .flatMap({ (textSearch) -> Driver<String> in
-                return Driver.just(textSearch)
-            })
-            .asDriver()
-        let reloadTrigger = tableView.loadMoreTopTrigger
-            .withLatestFrom(loadTrigger)
-        let loadMoreTrigger = tableView.loadMoreBottomTrigger
-            .withLatestFrom(loadTrigger)
         
         let input = SearchMovieViewModel.Input(
             loadTrigger: loadTrigger,
-            reloadTrigger: reloadTrigger,
-            loadMoreTrigger: loadMoreTrigger,
-            selectMovieTrigger: tableView.rx.itemSelected.asDriver())
+            reloadTrigger: tableView.loadMoreTopTrigger,
+            loadMoreTrigger: tableView.loadMoreBottomTrigger,
+            selectMovieTrigger: tableView.rx.itemSelected.asDriver()
+        )
         
         let output = viewModel.transform(input)
         
@@ -92,7 +79,7 @@ final class SearchMovieViewController: UIViewController, BindableType {
                     cellType: MovieTableViewCell.self)
                     .then {
                         $0.bindingCell(MovieViewModel(movie: movie))
-                }
+                    }
             }
             .disposed(by: rx.disposeBag)
         

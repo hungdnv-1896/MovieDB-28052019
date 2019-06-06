@@ -14,8 +14,8 @@ struct SearchMovieViewModel {
 extension SearchMovieViewModel: ViewModelType {
     struct Input {
         let loadTrigger: Driver<String>
-        let reloadTrigger: Driver<String>
-        let loadMoreTrigger: Driver<String>
+        let reloadTrigger: Driver<Void>
+        let loadMoreTrigger: Driver<Void>
         let selectMovieTrigger: Driver<IndexPath>
     }
     
@@ -31,11 +31,22 @@ extension SearchMovieViewModel: ViewModelType {
     }
     
     func transform(_ input: Input) -> Output {
-        let loadMoreOutput = setupLoadMorePagingWithParam(loadTrigger: input.loadTrigger,
+        let loadTrigger = input.loadTrigger
+            .startWith(" ")
+            .filter { !$0.isEmpty }
+            .flatMap { (textSearch) -> Driver<String> in
+                return Driver.just(textSearch)
+            }
+        let refreshTrigger = input.reloadTrigger
+            .withLatestFrom(loadTrigger)
+        let loadMoreTrigger = input.loadMoreTrigger
+            .withLatestFrom(loadTrigger)
+        
+        let loadMoreOutput = setupLoadMorePagingWithParam(loadTrigger: loadTrigger,
                                                           getItems: useCase.searchMovie,
-                                                          refreshTrigger: input.reloadTrigger,
+                                                          refreshTrigger: refreshTrigger,
                                                           refreshItems: useCase.searchMovie,
-                                                          loadMoreTrigger: input.loadMoreTrigger,
+                                                          loadMoreTrigger: loadMoreTrigger,
                                                           loadMoreItems: useCase.loadMoreSearchMovie)
 
         let (page, fetchItems, loadError, loading, refreshing, loadingMore) = loadMoreOutput

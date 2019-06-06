@@ -38,6 +38,6 @@ final class MovieRepository: MovieRepositoryType {
                     throw APIInvalidResponseError()
                 }
                 return PagingInfo<Movie>(page: page, items: movies)
-        }
+            }
     }
 }
