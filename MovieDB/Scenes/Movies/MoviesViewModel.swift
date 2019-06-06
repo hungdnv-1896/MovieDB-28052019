@@ -16,6 +16,8 @@ extension MoviesViewModel: ViewModelType {
         let loadTrigger: Driver<Void>
         let selectedCategoryTrigger: Driver<IndexPath>
         let searchMovieTrigger: Driver<Void>
+        let selectedBannerTrigger: Driver<IndexPath>
+        let selectedMovieTrigger: Driver<Movie>
     }
     
     struct Output {
@@ -23,6 +25,8 @@ extension MoviesViewModel: ViewModelType {
         let movieBannerList: Driver<[Movie]>
         let selectedCategory: Driver<Void>
         let searchMovie: Driver<Void>
+        let selectedBanner: Driver<Void>
+        let selectedMovie: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -97,6 +101,25 @@ extension MoviesViewModel: ViewModelType {
             })
             .mapToVoid()
         
+        let selectedBanner = input.selectedBannerTrigger
+            .withLatestFrom(movieBannerList) {
+                return ($0, $1)
+            }
+            .map { (indexPath, movieBanners) in
+                return movieBanners[indexPath.row]
+            }
+            .do(onNext: { (movie) in
+                self.navigator.toMovieDetail(movie: movie)
+            })
+            .mapToVoid()
+        
+        let selectedMovie = input.selectedMovieTrigger
+            .asDriver()
+            .do(onNext: { (movie) in
+                self.navigator.toMovieDetail(movie: movie)
+            })
+            .mapToVoid()
+        
         let searchMovie = input.searchMovieTrigger
             .do(onNext: { (category) in
                 self.navigator.toSearchMovie()
@@ -107,7 +130,9 @@ extension MoviesViewModel: ViewModelType {
             movieCategoryList: movieCategoryList,
             movieBannerList: movieBannerList,
             selectedCategory: selectedCategory,
-            searchMovie: searchMovie
+            searchMovie: searchMovie,
+            selectedBanner: selectedBanner,
+            selectedMovie: selectedMovie
         )
     }
 }

@@ -18,6 +18,8 @@ final class MoviesHeaderView: UIView, NibLoadable {
         }
     }
     
+    var handleShowMovieDetail: ((_ index: Int) -> Void )?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         configView()
@@ -55,6 +57,7 @@ extension MoviesHeaderView: FSPagerViewDataSource, FSPagerViewDelegate {
             $0.deselectItem(at: index, animated: true)
             $0.scrollToItem(at: index, animated: true)
         }
+        handleShowMovieDetail?(index)
     }
 }
 
