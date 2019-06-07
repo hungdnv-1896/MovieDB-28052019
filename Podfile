@@ -31,6 +31,7 @@ target 'MovieDB' do
     pod 'MBProgressHUD', '1.1'
     pod 'SDWebImage', '5.0'
     pod 'ActionSheetPicker-3.0', '2.3'
+    pod 'Cosmos', '~> 19.0'
 
   target 'MovieDBTests' do
     inherit! :search_paths
@@ -50,6 +51,11 @@ post_install do |installer|
         if ['Validator', 'OrderedSet', 'Differentiator'].include? target.name
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '4.0'
+            end
+        end
+	if ['Cosmos'].include? target.name
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '4.2'
             end
         end
     end

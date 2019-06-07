@@ -30,6 +30,8 @@ final class MoviesViewController: UIViewController, BindableType {
     
     fileprivate var showAllCategoryTrigger = PublishSubject<IndexPath>()
     fileprivate var showSearchScreenTrigger = PublishSubject<Void>()
+    fileprivate var showMovieBannerDetailTrigger = PublishSubject<IndexPath>()
+    fileprivate var showMovieDetailTrigger = PublishSubject<Movie>()
     
     // MARK: - Life Cycle
     
@@ -78,7 +80,9 @@ final class MoviesViewController: UIViewController, BindableType {
         let input = MoviesViewModel.Input(
             loadTrigger: Driver.just(()),
             selectedCategoryTrigger: showAllCategoryTrigger.asDriverOnErrorJustComplete(),
-            searchMovieTrigger: showSearchScreenTrigger.asDriverOnErrorJustComplete()
+            searchMovieTrigger: showSearchScreenTrigger.asDriverOnErrorJustComplete(),
+            selectedBannerTrigger: showMovieBannerDetailTrigger.asDriverOnErrorJustComplete(),
+            selectedMovieTrigger: showMovieDetailTrigger.asDriverOnErrorJustComplete()
         )
         
         let output = viewModel.transform(input)
@@ -96,6 +100,14 @@ final class MoviesViewController: UIViewController, BindableType {
             .disposed(by: rx.disposeBag)
         
         output.searchMovie
+            .drive()
+            .disposed(by: rx.disposeBag)
+        
+        output.selectedBanner
+            .drive()
+            .disposed(by: rx.disposeBag)
+        
+        output.selectedMovie
             .drive()
             .disposed(by: rx.disposeBag)
     }
@@ -141,6 +153,12 @@ extension MoviesViewController: UITableViewDataSource {
 extension MoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = MoviesHeaderView.loadFromNib()
+            .then {
+                $0.movieBannerList = moviesBanners
+                $0.handleShowMovieDetail = { [weak self] index in
+                    self?.showMovieBannerDetailTrigger.onNext(IndexPath(item: index, section: 0))
+                }
+            }
         header.movieBannerList = moviesBanners
         return header
     }
@@ -184,6 +202,7 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        showMovieDetailTrigger.onNext(categoryList[collectionView.tag].movies[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

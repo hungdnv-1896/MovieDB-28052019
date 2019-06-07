@@ -16,6 +16,10 @@ extension API {
     func searchMovieList(_ input: SearchMovieListInput) -> Observable<SearchMovieListOutput> {
         return request(input)
     }
+    
+    func getMovieDetail(_ input: GetMovieDetailInput) -> Observable<Movie> {
+        return request(input)
+    }
 }
 
 // MARK: - GetRepoList
@@ -62,6 +66,19 @@ extension API {
         override func mapping(map: Map) {
             super.mapping(map: map)
             movies <- map["results"]
+        }
+    }
+    
+    final class GetMovieDetailInput: APIInput {
+        init(id: Int) {
+            let params: JSONDictionary = [
+                "api_key": Keys.APIKey,
+                "append_to_response": "videos,credits"
+            ]
+            super.init(urlString: API.Urls.getMovieList + String(id),
+                       parameters: params,
+                       requestType: .get,
+                       requireAccessToken: true)
         }
     }
 }

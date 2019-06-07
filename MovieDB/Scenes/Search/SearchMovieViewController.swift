@@ -46,11 +46,13 @@ final class SearchMovieViewController: UIViewController, BindableType {
             $0.searchBar.delegate = self
             $0.searchBar.placeholder = "Enter keyword"
         }
+        
         navigationItem.do {
             $0.searchController = searchController
             $0.hidesSearchBarWhenScrolling = false
             $0.searchController?.obscuresBackgroundDuringPresentation = false
         }
+        
         tableView.do {
             $0.rowHeight = 150
             $0.register(cellType: MovieTableViewCell.self)
