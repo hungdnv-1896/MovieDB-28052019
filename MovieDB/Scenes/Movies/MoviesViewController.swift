@@ -155,8 +155,8 @@ extension MoviesViewController: UITableViewDelegate {
         let header = MoviesHeaderView.loadFromNib()
             .then {
                 $0.movieBannerList = moviesBanners
-                $0.handleShowMovieDetail = { index in
-                    self.showMovieBannerDetailTrigger.onNext(IndexPath(item: index, section: 0))
+                $0.handleShowMovieDetail = { [weak self] index in
+                    self?.showMovieBannerDetailTrigger.onNext(IndexPath(item: index, section: 0))
                 }
             }
         header.movieBannerList = moviesBanners
@@ -202,7 +202,7 @@ extension MoviesViewController: UICollectionViewDelegate, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.showMovieDetailTrigger.onNext(categoryList[collectionView.tag].movies[indexPath.row])
+        showMovieDetailTrigger.onNext(categoryList[collectionView.tag].movies[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

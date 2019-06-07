@@ -9,7 +9,7 @@
 import ObjectMapper
 
 struct Cast {
-    var castId = 0
+    var castId: Int
     var name: String
     var id: Int
     var profilePath: String

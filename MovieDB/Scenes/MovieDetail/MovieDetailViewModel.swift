@@ -17,11 +17,13 @@ extension MovieDetailViewModel: ViewModelType {
     struct Input {
         let loadTrigger: Driver<Void>
         let showCastDetailTrigger: Driver<IndexPath>
+        let backScreenTrigger: Driver<Void>
     }
     
     struct Output {
         let movieDetail: Driver<Movie>
         let castList: Driver<[Cast]>
+        let backScreen: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -37,12 +39,15 @@ extension MovieDetailViewModel: ViewModelType {
             }
         
         let castList = movieDetail
-            .map { (movie) -> [Cast] in
-                return movie.castList
-            }
-            .asDriver()
+            .map { $0.castList }
+        
+        let backScreen = input.backScreenTrigger
+            .do(onNext: {
+                self.navigator.backScreen()
+            })
         
         return Output(movieDetail: movieDetail,
-                      castList: castList)
+                      castList: castList,
+                      backScreen: backScreen)
     }
 }

@@ -91,11 +91,9 @@ extension MoviesViewModel: ViewModelType {
         
         let selectedCategory = input.selectedCategoryTrigger
             .withLatestFrom(movieCategoryList) {
-                return ($0, $1)
+                ($0, $1)
             }
-            .map { (indexPath, movieCategories) in
-                return movieCategories[indexPath.row]
-            }
+            .map { $1[$0.row] }
             .do(onNext: { (category) in
                 self.navigator.toMovieCategory(category: category)
             })
@@ -114,7 +112,6 @@ extension MoviesViewModel: ViewModelType {
             .mapToVoid()
         
         let selectedMovie = input.selectedMovieTrigger
-            .asDriver()
             .do(onNext: { (movie) in
                 self.navigator.toMovieDetail(movie: movie)
             })

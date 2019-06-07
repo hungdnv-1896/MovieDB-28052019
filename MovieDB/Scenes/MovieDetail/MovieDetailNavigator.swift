@@ -8,6 +8,7 @@
 
 protocol MovieDetailNavigatorType {
     func toCastDetail()
+    func backScreen()
 }
 
 struct MovieDetailNavigator: MovieDetailNavigatorType {
@@ -16,5 +17,9 @@ struct MovieDetailNavigator: MovieDetailNavigatorType {
     
     func toCastDetail() {
         
+    }
+    
+    func backScreen() {
+        navigationController.popViewController(animated: true)
     }
 }

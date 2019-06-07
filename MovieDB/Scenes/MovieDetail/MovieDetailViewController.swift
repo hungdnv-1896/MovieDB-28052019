@@ -20,6 +20,7 @@ final class MovieDetailViewController: UIViewController, BindableType {
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var rateView: CosmosView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var backButton: UIButton!
     
     var viewModel: MovieDetailViewModel!
     
@@ -29,7 +30,7 @@ final class MovieDetailViewController: UIViewController, BindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configView()
+        configView()	
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,15 +59,15 @@ final class MovieDetailViewController: UIViewController, BindableType {
     func bindViewModel() {
         let input = MovieDetailViewModel.Input(
             loadTrigger: Driver.just(()),
-            showCastDetailTrigger: showCastDetailTrigger.asDriverOnErrorJustComplete()
+            showCastDetailTrigger: showCastDetailTrigger.asDriverOnErrorJustComplete(),
+            backScreenTrigger: backButton.rx.tap.asDriverOnErrorJustComplete()
         )
         
         let output = viewModel.transform(input)
         
         output.movieDetail
-            .drive(onNext: { (movie) in
-                self.bindingMovieDetail(MovieViewModel(movie: movie))
-            })
+            .map { MovieViewModel(movie: $0) }
+            .drive(model)
             .disposed(by: rx.disposeBag)
         
         output.castList
@@ -76,18 +77,13 @@ final class MovieDetailViewController: UIViewController, BindableType {
                     cellType: CastCell.self)
                     .then {
                         $0.bindingCell(CastViewModel(cast: cast))
-                }
+                    }
             }
             .disposed(by: rx.disposeBag)
-    }
-    
-    private func bindingMovieDetail(_ movie: MovieViewModel?) {
-        backDropImage.sd_setImage(with: movie?.backdropImageURL, completed: nil)
-        posterImage.sd_setImage(with: movie?.posterImageURL, completed: nil)
-        movieNameLabel.text = movie?.name
-        overviewLabel.text = movie?.overview
-        timeLabel.text = String(format: "%ldm", movie?.runtime ?? 0)
-        rateView.rating = (movie?.voteAverage ?? 0.0)
+        
+        output.backScreen
+            .drive()
+            .disposed(by: rx.disposeBag)
     }
     
     // MARK: Actions
@@ -103,9 +99,21 @@ final class MovieDetailViewController: UIViewController, BindableType {
     @IBAction func addFavoriteAction(_ sender: Any) {
         // To do
     }
-    
-    @IBAction func backAction(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+}
+
+// MARK: - Binding Model
+extension MovieDetailViewController {
+    var model: Binder<MovieViewModel> {
+        return Binder(self) { viewController, movieDetailModel in
+            viewController.do {
+                $0.backDropImage.sd_setImage(with: movieDetailModel.backdropImageURL, completed: nil)
+                $0.posterImage.sd_setImage(with: movieDetailModel.posterImageURL, completed: nil)
+                $0.movieNameLabel.text = movieDetailModel.name
+                $0.overviewLabel.text = movieDetailModel.overview
+                $0.timeLabel.text = String(format: "%ldm", movieDetailModel.runtime)
+                $0.rateView.rating = (movieDetailModel.voteAverage)
+            }
+        }
     }
 }
 

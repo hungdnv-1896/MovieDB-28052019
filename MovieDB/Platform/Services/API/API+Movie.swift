@@ -74,7 +74,6 @@ extension API {
             let params: JSONDictionary = [
                 "api_key": Keys.APIKey,
                 "append_to_response": "videos,credits"
-                
             ]
             super.init(urlString: API.Urls.getMovieList + String(id),
                        parameters: params,
