@@ -24,6 +24,7 @@ extension MovieDetailViewModel: ViewModelType {
         let movieDetail: Driver<Movie>
         let castList: Driver<[Cast]>
         let backScreen: Driver<Void>
+        let showCastDetail: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -46,8 +47,19 @@ extension MovieDetailViewModel: ViewModelType {
                 self.navigator.backScreen()
             })
         
+        let showCastDetail = input.showCastDetailTrigger
+            .withLatestFrom(castList) {
+            return $1[$0.row]
+            }
+            .do(onNext: { (cast) in
+                self.navigator.toCastDetail(cast: cast)
+            })
+            .mapToVoid()
+        
+        
         return Output(movieDetail: movieDetail,
                       castList: castList,
-                      backScreen: backScreen)
+                      backScreen: backScreen,
+                      showCastDetail: showCastDetail)
     }
 }

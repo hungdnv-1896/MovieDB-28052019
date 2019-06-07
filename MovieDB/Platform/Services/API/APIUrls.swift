@@ -13,5 +13,7 @@ extension API {
         
         static let getMovieList = baseURL + "/movie/"
         static let searchMovie = baseURL + "/search/movie"
+        static let getCastDetail = baseURL + "/person/"
+        static let getMovieListByCast = baseURL + "/discover/movie"
     }
 }

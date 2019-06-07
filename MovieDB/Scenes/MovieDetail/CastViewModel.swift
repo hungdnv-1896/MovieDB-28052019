@@ -26,4 +26,24 @@ struct CastViewModel {
     var profileImageURL: URL? {
         return URL(string: API.Urls.baseURLImage + cast.profilePath)
     }
+    
+    var gender: Gender {
+        return cast.gender
+    }
+    
+    var biography: String {
+        return cast.biography
+    }
+    
+    var placeOfBirth: String {
+        return cast.placeOfBirth
+    }
+    
+    var birthday: String {
+        return cast.birthday
+    }
+    
+    var knowFor: String {
+        return cast.knowFor
+    }
 }

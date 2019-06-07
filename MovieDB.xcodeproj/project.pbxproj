@@ -11,6 +11,13 @@
 		3815F6D722A9E9FA00C5BC24 /* CastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3815F6D622A9E9FA00C5BC24 /* CastViewModel.swift */; };
 		3815F6DB22A9EB6000C5BC24 /* CastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3815F6D922A9EB6000C5BC24 /* CastCell.swift */; };
 		3815F6DC22A9EB6000C5BC24 /* CastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3815F6DA22A9EB6000C5BC24 /* CastCell.xib */; };
+		3815F6E122AA0E7F00C5BC24 /* CastDetailAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3815F6E022AA0E7F00C5BC24 /* CastDetailAssembler.swift */; };
+		3815F6E322AA13C100C5BC24 /* CastDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3815F6E222AA13C100C5BC24 /* CastDetailUseCase.swift */; };
+		3815F6E522AA13DA00C5BC24 /* CastDetailNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3815F6E422AA13DA00C5BC24 /* CastDetailNavigator.swift */; };
+		3815F6E722AA13EB00C5BC24 /* CastDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3815F6E622AA13EB00C5BC24 /* CastDetailViewModel.swift */; };
+		3815F6E922AA140D00C5BC24 /* CastDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3815F6E822AA140D00C5BC24 /* CastDetailViewController.swift */; };
+		3815F6EB22AA378F00C5BC24 /* CastDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3815F6EA22AA378F00C5BC24 /* CastDetailRepository.swift */; };
+		3815F6ED22AA534B00C5BC24 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3815F6EC22AA534B00C5BC24 /* Gender.swift */; };
 		381C9D66229F60DB002E8B70 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381C9D61229F60DA002E8B70 /* APIService.swift */; };
 		381C9D67229F60DB002E8B70 /* APIUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381C9D64229F60DA002E8B70 /* APIUrls.swift */; };
 		381C9D68229F60DB002E8B70 /* APIOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381C9D62229F60DA002E8B70 /* APIOutput.swift */; };
@@ -123,6 +130,13 @@
 		3815F6D622A9E9FA00C5BC24 /* CastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastViewModel.swift; sourceTree = "<group>"; };
 		3815F6D922A9EB6000C5BC24 /* CastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCell.swift; sourceTree = "<group>"; };
 		3815F6DA22A9EB6000C5BC24 /* CastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastCell.xib; sourceTree = "<group>"; };
+		3815F6E022AA0E7F00C5BC24 /* CastDetailAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastDetailAssembler.swift; sourceTree = "<group>"; };
+		3815F6E222AA13C100C5BC24 /* CastDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastDetailUseCase.swift; sourceTree = "<group>"; };
+		3815F6E422AA13DA00C5BC24 /* CastDetailNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastDetailNavigator.swift; sourceTree = "<group>"; };
+		3815F6E622AA13EB00C5BC24 /* CastDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastDetailViewModel.swift; sourceTree = "<group>"; };
+		3815F6E822AA140D00C5BC24 /* CastDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastDetailViewController.swift; sourceTree = "<group>"; };
+		3815F6EA22AA378F00C5BC24 /* CastDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastDetailRepository.swift; sourceTree = "<group>"; };
+		3815F6EC22AA534B00C5BC24 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		381C9D60229F60D9002E8B70 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		381C9D61229F60DA002E8B70 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		381C9D62229F60DA002E8B70 /* APIOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOutput.swift; sourceTree = "<group>"; };
@@ -270,6 +284,18 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		3815F6DD22AA0E3200C5BC24 /* CastDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3815F6E022AA0E7F00C5BC24 /* CastDetailAssembler.swift */,
+				3815F6E222AA13C100C5BC24 /* CastDetailUseCase.swift */,
+				3815F6E422AA13DA00C5BC24 /* CastDetailNavigator.swift */,
+				3815F6E622AA13EB00C5BC24 /* CastDetailViewModel.swift */,
+				3815F6E822AA140D00C5BC24 /* CastDetailViewController.swift */,
+			);
+			path = CastDetail;
+			sourceTree = "<group>";
+		};
 		381C9D5D229F60A8002E8B70 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +340,7 @@
 				381C9D82229F6737002E8B70 /* MovieRepository.swift */,
 				381C9D96229FCF00002E8B70 /* RepositoriesAssembler.swift */,
 				3827D81C22A8CB3000EF08B7 /* MovieDetailRepository.swift */,
+				3815F6EA22AA378F00C5BC24 /* CastDetailRepository.swift */,
 			);
 			path = Repositoties;
 			sourceTree = "<group>";
@@ -467,6 +494,7 @@
 			isa = PBXGroup;
 			children = (
 				381D601122A74D1500C3DE6F /* Common */,
+				3815F6DD22AA0E3200C5BC24 /* CastDetail */,
 				3827D81122A8BA6700EF08B7 /* MovieDetail */,
 				381D601822A790EB00C3DE6F /* Search */,
 				381D600122A74C1500C3DE6F /* Category */,
@@ -626,6 +654,7 @@
 				381D601622A74D7D00C3DE6F /* Utils.swift */,
 				3822571822A622CC003B9E7B /* APIKey.swift */,
 				38EEE2CD22A4F6E500099797 /* CategoryType.swift */,
+				3815F6EC22AA534B00C5BC24 /* Gender.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -977,6 +1006,7 @@
 				3855019B229D0923009B7BA2 /* MoviesViewController.swift in Sources */,
 				381C9D83229F6737002E8B70 /* MovieRepository.swift in Sources */,
 				3822572522A62396003B9E7B /* FSPagerViewLayoutAttributes.swift in Sources */,
+				3815F6EB22AA378F00C5BC24 /* CastDetailRepository.swift in Sources */,
 				381D5FFD22A74BD500C3DE6F /* UIViewController+Rx.swift in Sources */,
 				3827D81D22A8CB3000EF08B7 /* MovieDetailRepository.swift in Sources */,
 				3822573122A64ADE003B9E7B /* MovieViewModel.swift in Sources */,
@@ -987,20 +1017,26 @@
 				3822572F22A62996003B9E7B /* UIView+.swift in Sources */,
 				3827D81322A8BA8400EF08B7 /* MovieDetailAssembler.swift in Sources */,
 				3827D81B22A8BB0F00EF08B7 /* MovieDetailViewController.swift in Sources */,
+				3815F6E522AA13DA00C5BC24 /* CastDetailNavigator.swift in Sources */,
+				3815F6E722AA13EB00C5BC24 /* CastDetailViewModel.swift in Sources */,
 				381C9D97229FCF00002E8B70 /* RepositoriesAssembler.swift in Sources */,
 				3821A8F5229CC373007002B3 /* AppDelegate.swift in Sources */,
+				3815F6ED22AA534B00C5BC24 /* Gender.swift in Sources */,
 				3828654122A0CE1300AF3C07 /* MoviesHeaderView.swift in Sources */,
 				381D601722A74D7D00C3DE6F /* Utils.swift in Sources */,
 				385501AF229D28DF009B7BA2 /* FavoriteUseCase.swift in Sources */,
 				3822572C22A62396003B9E7B /* FSPageControl.swift in Sources */,
 				381D600A22A74C2D00C3DE6F /* CategoryNavigator.swift in Sources */,
+				3815F6E122AA0E7F00C5BC24 /* CastDetailAssembler.swift in Sources */,
 				381C9D68229F60DB002E8B70 /* APIOutput.swift in Sources */,
 				385501A9229D28A3009B7BA2 /* FavoriteViewController.swift in Sources */,
 				3855019D229D0934009B7BA2 /* MoviesUseCase.swift in Sources */,
 				381C9D7B229F65CE002E8B70 /* Movie.swift in Sources */,
+				3815F6E322AA13C100C5BC24 /* CastDetailUseCase.swift in Sources */,
 				3822572722A62396003B9E7B /* FSPagerView.swift in Sources */,
 				381C9D66229F60DB002E8B70 /* APIService.swift in Sources */,
 				3822571922A622CC003B9E7B /* APIKey.swift in Sources */,
+				3815F6E922AA140D00C5BC24 /* CastDetailViewController.swift in Sources */,
 				38550191229CE81D009B7BA2 /* MainViewModel.swift in Sources */,
 				385501A3229D0974009B7BA2 /* MoviesNavigator.swift in Sources */,
 				381D600B22A74C2D00C3DE6F /* CategoryViewModel.swift in Sources */,

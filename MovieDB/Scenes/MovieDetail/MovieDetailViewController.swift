@@ -84,6 +84,10 @@ final class MovieDetailViewController: UIViewController, BindableType {
         output.backScreen
             .drive()
             .disposed(by: rx.disposeBag)
+        
+        output.showCastDetail
+            .drive()
+            .disposed(by: rx.disposeBag)
     }
     
     // MARK: Actions
