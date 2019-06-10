@@ -32,6 +32,9 @@ final class MoviesHeaderView: UIView, NibLoadable {
             $0.decelerationDistance = 1
             $0.delegate = self
             $0.dataSource = self
+            $0.automaticSlidingInterval = 4
+            $0.isInfinite = true
+            $0.transformer = FSPagerViewTransformer(type: .zoomOut)
         }
     }
 }

@@ -16,7 +16,7 @@ struct Cast {
     var gender: Gender
     var biography: String
     var placeOfBirth: String
-    var birthday: String
+    var birthday: Date
     var knowFor: String
 }
 
@@ -30,7 +30,7 @@ extension Cast {
             gender: .none,
             biography: "",
             placeOfBirth: "",
-            birthday: "",
+            birthday: Date(),
             knowFor: ""
         )
     }
@@ -52,7 +52,7 @@ extension Cast: Mappable {
         gender <- map["gender"]
         biography <- map["biography"]
         placeOfBirth <- map["place_of_birth"]
-        birthday <- map["birthday"]
+        birthday <- (map["birthday"], DateTransform())
         knowFor <- map["known_for_department"]
     }
 }

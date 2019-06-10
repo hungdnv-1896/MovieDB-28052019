@@ -19,13 +19,17 @@ final class CastDetailViewController: UIViewController, BindableType {
     @IBOutlet weak var biographyLabel: UILabel!
     @IBOutlet weak var movieTableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
     
     var viewModel: CastDetailViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
+    }
+    
+    override func loadView() {
+        super.loadView()
+        self.hidesBottomBarWhenPushed = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,9 +46,6 @@ final class CastDetailViewController: UIViewController, BindableType {
         movieTableView.do {
             $0.rowHeight = 120
             $0.register(cellType: MovieTableViewCell.self)
-        }
-        scrollView.do {
-            $0.contentInset = UIEdgeInsets(top: -44, left: 0, bottom: 0, right: 0)
         }
     }
     
@@ -93,12 +94,17 @@ extension CastDetailViewController {
     var cast: Binder<CastViewModel> {
         return Binder(self) { viewController, castDetailModel in
             viewController.do {
-                $0.castProfileImage.sd_setImage(with: castDetailModel.profileImageURL, completed: nil)
+                $0.castProfileImage.sd_setImage(with: castDetailModel.profileImageURL,
+                                                completed: nil)
                 $0.castNameLabel.text = castDetailModel.name
-                $0.knowForLabel.text = String(format: "Known For: %@", castDetailModel.knowFor)
-                $0.genderLabel.text = String(format: "Gender: %@", castDetailModel.gender.title)
-                $0.birthdayLabel.text = String(format: "Birthday: %@", castDetailModel.birthday)
-                $0.placeOfBirthLabel.text = String(format: "Place of birth: %@", castDetailModel.placeOfBirth)
+                $0.knowForLabel.text = String(format: "Known For: %@",
+                                              castDetailModel.knowFor)
+                $0.genderLabel.text = String(format: "Gender: %@",
+                                             castDetailModel.gender.title)
+                $0.birthdayLabel.text = String(format: "Birthday: %@",
+                                               castDetailModel.birthdayString)
+                $0.placeOfBirthLabel.text = String(format: "Place of birth: %@",
+                                                   castDetailModel.placeOfBirth)
                 $0.biographyLabel.text = castDetailModel.biography
             }
         }

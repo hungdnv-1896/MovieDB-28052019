@@ -39,8 +39,8 @@ struct CastViewModel {
         return cast.placeOfBirth
     }
     
-    var birthday: String {
-        return cast.birthday
+    var birthdayString: String {
+        return cast.birthday.toString(dateFormat: "dd-MM-yyyy")
     }
     
     var knowFor: String {

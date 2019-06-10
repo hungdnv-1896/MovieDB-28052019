@@ -17,7 +17,7 @@ struct MovieDetailNavigator: MovieDetailNavigatorType {
     
     func toCastDetail(cast: Cast) {
         let vc: CastDetailViewController = assembler.resolve(navigationController: navigationController,
-                                                              cast: cast)
+                                                             cast: cast)
         navigationController.pushViewController(vc, animated: true)
     }
     

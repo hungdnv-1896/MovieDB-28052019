@@ -19,7 +19,6 @@ final class MovieDetailViewController: UIViewController, BindableType {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var rateView: CosmosView!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var backButton: UIButton!
     
     var viewModel: MovieDetailViewModel!
@@ -31,6 +30,11 @@ final class MovieDetailViewController: UIViewController, BindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()	
+    }
+    
+    override func loadView() {
+        super.loadView()
+        self.hidesBottomBarWhenPushed = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,9 +54,6 @@ final class MovieDetailViewController: UIViewController, BindableType {
         castCollectionView.do {
             $0.delegate = self
             $0.register(cellType: CastCell.self)
-        }
-        scrollView.do {
-            $0.contentInset = UIEdgeInsets(top: -44, left: 0, bottom: 0, right: 0)
         }
     }
     

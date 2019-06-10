@@ -37,7 +37,7 @@ extension CastDetailViewModel: ViewModelType {
                     .trackActivity(activityIndicator)
                     .trackError(errorTracker)
                     .asDriverOnErrorJustComplete()
-        }
+            }
         
         let movieList = input.loadTrigger
             .flatMapLatest { _ -> Driver<PagingInfo<Movie>> in
