@@ -18,6 +18,7 @@ extension MovieDetailViewModel: ViewModelType {
         let loadTrigger: Driver<Void>
         let showCastDetailTrigger: Driver<IndexPath>
         let backScreenTrigger: Driver<Void>
+        let showReviewsTrigger: Driver<Void>
     }
     
     struct Output {
@@ -25,6 +26,7 @@ extension MovieDetailViewModel: ViewModelType {
         let castList: Driver<[Cast]>
         let backScreen: Driver<Void>
         let showCastDetail: Driver<Void>
+        let showReviews: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -56,10 +58,15 @@ extension MovieDetailViewModel: ViewModelType {
             })
             .mapToVoid()
         
+        let showReviews = input.showReviewsTrigger
+            .do(onNext: {
+                self.navigator.toReviews(movie: self.movie)
+            })
         
         return Output(movieDetail: movieDetail,
                       castList: castList,
                       backScreen: backScreen,
-                      showCastDetail: showCastDetail)
+                      showCastDetail: showCastDetail,
+                      showReviews: showReviews)
     }
 }

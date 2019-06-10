@@ -10,6 +10,7 @@ protocol RepositoriesAssembler {
     func resolve() -> MovieRepositoryType
     func resolve() -> MovieDetailRepositoryType
     func resolve() -> CastDetailRepositoryType
+    func resolve() -> ReviewsRepositoryType
 }
 
 extension RepositoriesAssembler where Self: DefaultAssembler {
@@ -23,5 +24,9 @@ extension RepositoriesAssembler where Self: DefaultAssembler {
     
     func resolve() -> CastDetailRepositoryType {
         return CastDetailRepository()
+    }
+    
+    func resolve() -> ReviewsRepositoryType {
+        return ReviewsRepository()
     }
 }

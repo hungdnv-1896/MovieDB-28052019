@@ -20,6 +20,9 @@ final class MovieDetailViewController: UIViewController, BindableType {
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var rateView: CosmosView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var trailerButton: UIButton!
+    @IBOutlet weak var showReviewsButton: UIButton!
+    @IBOutlet weak var addFavoriteButton: UIButton!
     
     var viewModel: MovieDetailViewModel!
     
@@ -61,7 +64,8 @@ final class MovieDetailViewController: UIViewController, BindableType {
         let input = MovieDetailViewModel.Input(
             loadTrigger: Driver.just(()),
             showCastDetailTrigger: showCastDetailTrigger.asDriverOnErrorJustComplete(),
-            backScreenTrigger: backButton.rx.tap.asDriverOnErrorJustComplete()
+            backScreenTrigger: backButton.rx.tap.asDriverOnErrorJustComplete(),
+            showReviewsTrigger: showReviewsButton.rx.tap.asDriverOnErrorJustComplete()
         )
         
         let output = viewModel.transform(input)
@@ -89,20 +93,10 @@ final class MovieDetailViewController: UIViewController, BindableType {
         output.showCastDetail
             .drive()
             .disposed(by: rx.disposeBag)
-    }
-    
-    // MARK: Actions
-    
-    @IBAction func watchTrailerAction(_ sender: Any) {
-        // To do
-    }
-    
-    @IBAction func showReviewAction(_ sender: Any) {
-        // To do
-    }
-    
-    @IBAction func addFavoriteAction(_ sender: Any) {
-        // To do
+        
+        output.showReviews
+            .drive()
+            .disposed(by: rx.disposeBag)
     }
 }
 
