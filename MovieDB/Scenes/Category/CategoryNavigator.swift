@@ -17,6 +17,7 @@ struct CategoryNavigator: CategoryNavigatorType {
     func toMovieDetail(movie: Movie) {
         let vc: MovieDetailViewController = assembler.resolve(navigationController: navigationController,
                                                               movie: movie)
+        vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)
     }
 }
