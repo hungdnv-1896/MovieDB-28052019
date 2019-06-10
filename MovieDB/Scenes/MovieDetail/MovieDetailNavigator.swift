@@ -7,7 +7,7 @@
 //
 
 protocol MovieDetailNavigatorType {
-    func toCastDetail()
+    func toCastDetail(cast: Cast)
     func backScreen()
 }
 
@@ -15,8 +15,10 @@ struct MovieDetailNavigator: MovieDetailNavigatorType {
     unowned let assembler: Assembler
     unowned let navigationController: UINavigationController
     
-    func toCastDetail() {
-        
+    func toCastDetail(cast: Cast) {
+        let vc: CastDetailViewController = assembler.resolve(navigationController: navigationController,
+                                                             cast: cast)
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func backScreen() {

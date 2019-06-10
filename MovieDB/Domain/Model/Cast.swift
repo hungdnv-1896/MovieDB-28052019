@@ -13,6 +13,11 @@ struct Cast {
     var name: String
     var id: Int
     var profilePath: String
+    var gender: Gender
+    var biography: String
+    var placeOfBirth: String
+    var birthday: Date
+    var knowFor: String
 }
 
 extension Cast {
@@ -21,7 +26,12 @@ extension Cast {
             castId: 0,
             name: "",
             id: 0,
-            profilePath: ""
+            profilePath: "",
+            gender: .none,
+            biography: "",
+            placeOfBirth: "",
+            birthday: Date(),
+            knowFor: ""
         )
     }
 }
@@ -39,6 +49,11 @@ extension Cast: Mappable {
         name <- map["name"]
         castId <- map["cast_id"]
         profilePath <- map["profile_path"]
+        gender <- map["gender"]
+        biography <- map["biography"]
+        placeOfBirth <- map["place_of_birth"]
+        birthday <- (map["birthday"], DateTransform())
+        knowFor <- map["known_for_department"]
     }
 }
 

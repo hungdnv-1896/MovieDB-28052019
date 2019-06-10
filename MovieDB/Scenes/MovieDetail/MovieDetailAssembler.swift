@@ -18,11 +18,11 @@ protocol MovieDetailAssemler {
 extension MovieDetailAssemler {
     func resolve(navigationController: UINavigationController,
                  movie: Movie) -> MovieDetailViewController {
-        let categoryVC = MovieDetailViewController.instantiate()
+        let movieDetailVC = MovieDetailViewController.instantiate()
         let vm: MovieDetailViewModel = resolve(navigationController: navigationController,
                                                movie: movie)
-        categoryVC.bindViewModel(to: vm)
-        return categoryVC
+        movieDetailVC.bindViewModel(to: vm)
+        return movieDetailVC
     }
     
     func resolve(navigationController: UINavigationController,
