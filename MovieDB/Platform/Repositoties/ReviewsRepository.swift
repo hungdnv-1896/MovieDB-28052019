@@ -21,7 +21,7 @@ final class ReviewsRepository: ReviewsRepositoryType {
                     throw APIInvalidResponseError()
                 }
                 return PagingInfo<Review>(page: page, items: reviews)
-        }
+            }
     }
 }
 

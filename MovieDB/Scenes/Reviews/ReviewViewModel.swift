@@ -6,7 +6,7 @@
 //  Copyright © 2019 nguyen.van.hungd. All rights reserved.
 //
 
-struct ReviewModel {
+struct ReviewViewModel {
     let review: Review
     
     var id: String {

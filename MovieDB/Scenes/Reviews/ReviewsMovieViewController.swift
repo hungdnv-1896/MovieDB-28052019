@@ -20,7 +20,7 @@ final class ReviewsMovieViewController: UIViewController, BindableType {
     }
     
     private func configView() {
-        self.title = "Reviews"
+        title = "Reviews"
         tableView.do {
             $0.estimatedRowHeight = 150
             $0.register(cellType: ReviewTableViewCell.self)
@@ -41,8 +41,8 @@ final class ReviewsMovieViewController: UIViewController, BindableType {
                     for: IndexPath(row: index, section: 0),
                     cellType: ReviewTableViewCell.self)
                     .then {
-                        $0.bindingCell(ReviewModel(review: review))
-                }
+                        $0.bindingCell(ReviewViewModel(review: review))
+                    }
             }
             .disposed(by: rx.disposeBag)
         

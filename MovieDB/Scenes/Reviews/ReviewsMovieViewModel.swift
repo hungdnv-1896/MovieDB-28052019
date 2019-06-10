@@ -30,19 +30,21 @@ extension ReviewsMovieViewModel: ViewModelType {
     }
     
     func transform(_ input: Input) -> Output {
-        let loadTrigger = input.loadTrigger
-            .map { _ in self.movie.id }
-        let reloadTrigger = input.reloadTrigger
-            .withLatestFrom(loadTrigger)
-        let loadMoreTrigger = input.loadMoreTrigger
-            .withLatestFrom(loadTrigger)
         
-        let loadMoreOutput = setupLoadMorePagingWithParam(loadTrigger: loadTrigger,
-                                                          getItems: useCase.getReviewList,
-                                                          refreshTrigger: reloadTrigger,
-                                                          refreshItems: useCase.getReviewList,
-                                                          loadMoreTrigger: loadMoreTrigger,
-                                                          loadMoreItems: useCase.loadMoreReviewList)
+        let loadMoreOutput = setupLoadMorePaging(
+            loadTrigger: input.loadTrigger,
+            getItems: {
+                self.useCase.getReviewList(self.movie.id)
+            },
+            refreshTrigger: input.reloadTrigger,
+            refreshItems: {
+                self.useCase.getReviewList(self.movie.id)
+            },
+            loadMoreTrigger: input.loadMoreTrigger,
+            loadMoreItems: { page in
+                self.useCase.loadMoreReviewList(id: self.movie.id, page: page)
+            }
+        )
         
         let (page, fetchItems, loadError, loading, refreshing, loadingMore) = loadMoreOutput
         
