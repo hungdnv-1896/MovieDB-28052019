@@ -10,6 +10,7 @@ protocol MovieDetailNavigatorType {
     func toCastDetail(cast: Cast)
     func backScreen()
     func toReviews(movie: Movie)
+    func playTrailler(movie: Movie)
 }
 
 struct MovieDetailNavigator: MovieDetailNavigatorType {
@@ -29,6 +30,12 @@ struct MovieDetailNavigator: MovieDetailNavigatorType {
     func toReviews(movie: Movie) {
         let vc: ReviewsMovieViewController = assembler.resolve(navigationController: navigationController,
                                                                movie: movie)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func playTrailler(movie: Movie) {
+        let vc: VideoPlayerViewController = assembler.resolve(navigationController: navigationController,
+                                                              movie: movie)
         navigationController.pushViewController(vc, animated: true)
     }
 }

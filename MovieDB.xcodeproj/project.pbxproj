@@ -86,6 +86,17 @@
 		3823179622ADEE500075BFF4 /* ReviewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3823179522ADEE500075BFF4 /* ReviewsRepository.swift */; };
 		3823179822ADF0230075BFF4 /* API+Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3823179722ADF0230075BFF4 /* API+Reviews.swift */; };
 		3823179A22ADF62F0075BFF4 /* API+Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3823179922ADF62F0075BFF4 /* API+Cast.swift */; };
+		382317A022ADFBA00075BFF4 /* VideoPlayerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3823179C22ADFB9F0075BFF4 /* VideoPlayerUseCase.swift */; };
+		382317A122ADFBA00075BFF4 /* VideoPlayerAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3823179D22ADFB9F0075BFF4 /* VideoPlayerAssembler.swift */; };
+		382317A222ADFBA00075BFF4 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3823179E22ADFB9F0075BFF4 /* VideoPlayerViewController.swift */; };
+		382317A322ADFBA00075BFF4 /* VideoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3823179F22ADFBA00075BFF4 /* VideoPlayerViewModel.swift */; };
+		382317A522ADFBE00075BFF4 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382317A422ADFBE00075BFF4 /* Video.swift */; };
+		382317A922AE3E490075BFF4 /* VideoPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382317A722AE3E490075BFF4 /* VideoPlayerTableViewCell.swift */; };
+		382317AA22AE3E490075BFF4 /* VideoPlayerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 382317A822AE3E490075BFF4 /* VideoPlayerTableViewCell.xib */; };
+		382317AC22AE4EEE0075BFF4 /* VideoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382317AB22AE4EEE0075BFF4 /* VideoRepository.swift */; };
+		382317AE22AE4F3C0075BFF4 /* API+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382317AD22AE4F3C0075BFF4 /* API+Video.swift */; };
+		382317B022AE56C00075BFF4 /* VideoPlayerNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382317AF22AE56C00075BFF4 /* VideoPlayerNavigator.swift */; };
+		382317B222AE65760075BFF4 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382317B122AE65760075BFF4 /* VideoViewModel.swift */; };
 		3827D81322A8BA8400EF08B7 /* MovieDetailAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827D81222A8BA8400EF08B7 /* MovieDetailAssembler.swift */; };
 		3827D81522A8BAE100EF08B7 /* MovieDetailNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827D81422A8BAE100EF08B7 /* MovieDetailNavigator.swift */; };
 		3827D81722A8BAED00EF08B7 /* MovieDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827D81622A8BAED00EF08B7 /* MovieDetailUseCase.swift */; };
@@ -226,6 +237,17 @@
 		3823179522ADEE500075BFF4 /* ReviewsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsRepository.swift; sourceTree = "<group>"; };
 		3823179722ADF0230075BFF4 /* API+Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Reviews.swift"; sourceTree = "<group>"; };
 		3823179922ADF62F0075BFF4 /* API+Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Cast.swift"; sourceTree = "<group>"; };
+		3823179C22ADFB9F0075BFF4 /* VideoPlayerUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerUseCase.swift; sourceTree = "<group>"; };
+		3823179D22ADFB9F0075BFF4 /* VideoPlayerAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerAssembler.swift; sourceTree = "<group>"; };
+		3823179E22ADFB9F0075BFF4 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		3823179F22ADFBA00075BFF4 /* VideoPlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewModel.swift; sourceTree = "<group>"; };
+		382317A422ADFBE00075BFF4 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		382317A722AE3E490075BFF4 /* VideoPlayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerTableViewCell.swift; sourceTree = "<group>"; };
+		382317A822AE3E490075BFF4 /* VideoPlayerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPlayerTableViewCell.xib; sourceTree = "<group>"; };
+		382317AB22AE4EEE0075BFF4 /* VideoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRepository.swift; sourceTree = "<group>"; };
+		382317AD22AE4F3C0075BFF4 /* API+Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Video.swift"; sourceTree = "<group>"; };
+		382317AF22AE56C00075BFF4 /* VideoPlayerNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerNavigator.swift; sourceTree = "<group>"; };
+		382317B122AE65760075BFF4 /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
 		3827D81222A8BA8400EF08B7 /* MovieDetailAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailAssembler.swift; sourceTree = "<group>"; };
 		3827D81422A8BAE100EF08B7 /* MovieDetailNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailNavigator.swift; sourceTree = "<group>"; };
 		3827D81622A8BAED00EF08B7 /* MovieDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailUseCase.swift; sourceTree = "<group>"; };
@@ -341,6 +363,7 @@
 				381C9D65229F60DB002E8B70 /* API+Movie.swift */,
 				3823179722ADF0230075BFF4 /* API+Reviews.swift */,
 				3823179922ADF62F0075BFF4 /* API+Cast.swift */,
+				382317AD22AE4F3C0075BFF4 /* API+Video.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -359,6 +382,7 @@
 				381C9D7A229F65CE002E8B70 /* Movie.swift */,
 				3827D81E22A901B600EF08B7 /* Cast.swift */,
 				3823179322ADEE1E0075BFF4 /* Review.swift */,
+				382317A422ADFBE00075BFF4 /* Video.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -371,6 +395,7 @@
 				3827D81C22A8CB3000EF08B7 /* MovieDetailRepository.swift */,
 				3815F6EA22AA378F00C5BC24 /* CastDetailRepository.swift */,
 				3823179522ADEE500075BFF4 /* ReviewsRepository.swift */,
+				382317AB22AE4EEE0075BFF4 /* VideoRepository.swift */,
 			);
 			path = Repositoties;
 			sourceTree = "<group>";
@@ -524,6 +549,7 @@
 			isa = PBXGroup;
 			children = (
 				381D601122A74D1500C3DE6F /* Common */,
+				3823179B22ADFB8A0075BFF4 /* VideoPlayer */,
 				3823178122ADED790075BFF4 /* Reviews */,
 				3815F6DD22AA0E3200C5BC24 /* CastDetail */,
 				3827D81122A8BA6700EF08B7 /* MovieDetail */,
@@ -597,6 +623,29 @@
 			children = (
 				3823179022ADEDD60075BFF4 /* ReviewTableViewCell.swift */,
 				3823178F22ADEDD60075BFF4 /* ReviewTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3823179B22ADFB8A0075BFF4 /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				3823179D22ADFB9F0075BFF4 /* VideoPlayerAssembler.swift */,
+				3823179C22ADFB9F0075BFF4 /* VideoPlayerUseCase.swift */,
+				3823179E22ADFB9F0075BFF4 /* VideoPlayerViewController.swift */,
+				3823179F22ADFBA00075BFF4 /* VideoPlayerViewModel.swift */,
+				382317AF22AE56C00075BFF4 /* VideoPlayerNavigator.swift */,
+				382317B122AE65760075BFF4 /* VideoViewModel.swift */,
+				382317A622AE3E250075BFF4 /* Cell */,
+			);
+			path = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		382317A622AE3E250075BFF4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				382317A722AE3E490075BFF4 /* VideoPlayerTableViewCell.swift */,
+				382317A822AE3E490075BFF4 /* VideoPlayerTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -845,6 +894,7 @@
 				3855018D229CE136009B7BA2 /* Assets.xcassets in Resources */,
 				3821A8FA229CC373007002B3 /* Main.storyboard in Resources */,
 				381D601522A74D3200C3DE6F /* EmptyDataView.xib in Resources */,
+				382317AA22AE3E490075BFF4 /* VideoPlayerTableViewCell.xib in Resources */,
 				381C9D91229FABFA002E8B70 /* MovieCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -965,6 +1015,7 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
+				"${BUILT_PRODUCTS_DIR}/YoutubePlayer-in-WKWebView/YoutubePlayer_in_WKWebView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -992,6 +1043,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YoutubePlayer_in_WKWebView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1044,8 +1096,10 @@
 				3822572922A62396003B9E7B /* FSPageViewLayout.swift in Sources */,
 				381D601422A74D3200C3DE6F /* EmptyDataView.swift in Sources */,
 				3822572A22A62396003B9E7B /* FSPagerCollectionView.swift in Sources */,
+				382317A222ADFBA00075BFF4 /* VideoPlayerViewController.swift in Sources */,
 				3823179422ADEE1E0075BFF4 /* Review.swift in Sources */,
 				3821A8F7229CC373007002B3 /* MainViewController.swift in Sources */,
+				382317A322ADFBA00075BFF4 /* VideoPlayerViewModel.swift in Sources */,
 				38EEE2CF22A4F6E500099797 /* CategoryType.swift in Sources */,
 				3821A930229CC7FA007002B3 /* AppViewModel.swift in Sources */,
 				381C9D69229F60DB002E8B70 /* APIInput.swift in Sources */,
@@ -1077,15 +1131,18 @@
 				3822572F22A62996003B9E7B /* UIView+.swift in Sources */,
 				3827D81322A8BA8400EF08B7 /* MovieDetailAssembler.swift in Sources */,
 				3827D81B22A8BB0F00EF08B7 /* MovieDetailViewController.swift in Sources */,
+				382317AE22AE4F3C0075BFF4 /* API+Video.swift in Sources */,
 				3823178B22ADEDBC0075BFF4 /* ReviewsMovieUseCase.swift in Sources */,
 				3823178822ADEDBC0075BFF4 /* ReviewsMovieAssembler.swift in Sources */,
 				3815F6E522AA13DA00C5BC24 /* CastDetailNavigator.swift in Sources */,
+				382317B022AE56C00075BFF4 /* VideoPlayerNavigator.swift in Sources */,
 				3823178A22ADEDBC0075BFF4 /* ReviewsMovieViewController.swift in Sources */,
 				3823179622ADEE500075BFF4 /* ReviewsRepository.swift in Sources */,
 				3823178022ADE76A0075BFF4 /* Date+.swift in Sources */,
 				3815F6E722AA13EB00C5BC24 /* CastDetailViewModel.swift in Sources */,
 				381C9D97229FCF00002E8B70 /* RepositoriesAssembler.swift in Sources */,
 				3821A8F5229CC373007002B3 /* AppDelegate.swift in Sources */,
+				382317A522ADFBE00075BFF4 /* Video.swift in Sources */,
 				3815F6ED22AA534B00C5BC24 /* Gender.swift in Sources */,
 				3828654122A0CE1300AF3C07 /* MoviesHeaderView.swift in Sources */,
 				381D601722A74D7D00C3DE6F /* Utils.swift in Sources */,
@@ -1095,6 +1152,8 @@
 				3815F6E122AA0E7F00C5BC24 /* CastDetailAssembler.swift in Sources */,
 				381C9D68229F60DB002E8B70 /* APIOutput.swift in Sources */,
 				385501A9229D28A3009B7BA2 /* FavoriteViewController.swift in Sources */,
+				382317A122ADFBA00075BFF4 /* VideoPlayerAssembler.swift in Sources */,
+				382317B222AE65760075BFF4 /* VideoViewModel.swift in Sources */,
 				3823179822ADF0230075BFF4 /* API+Reviews.swift in Sources */,
 				3855019D229D0934009B7BA2 /* MoviesUseCase.swift in Sources */,
 				381C9D7B229F65CE002E8B70 /* Movie.swift in Sources */,
@@ -1111,10 +1170,14 @@
 				3827D81922A8BAFB00EF08B7 /* MovieDetailViewModel.swift in Sources */,
 				3822572822A62396003B9E7B /* FSPagerViewCell.swift in Sources */,
 				3823178922ADEDBC0075BFF4 /* ReviewViewModel.swift in Sources */,
+				3823178922ADEDBC0075BFF4 /* ReviewModel.swift in Sources */,
+				382317A922AE3E490075BFF4 /* VideoPlayerTableViewCell.swift in Sources */,
+				382317AC22AE4EEE0075BFF4 /* VideoRepository.swift in Sources */,
 				381D600922A74C2D00C3DE6F /* CategoryViewController.swift in Sources */,
 				381C9D8C229F8A82002E8B70 /* CategoryCell.swift in Sources */,
 				385501AB229D28BA009B7BA2 /* FavoriteViewModel.swift in Sources */,
 				3823179A22ADF62F0075BFF4 /* API+Cast.swift in Sources */,
+				382317A022ADFBA00075BFF4 /* VideoPlayerUseCase.swift in Sources */,
 				3827D81722A8BAED00EF08B7 /* MovieDetailUseCase.swift in Sources */,
 				385501A1229D0954009B7BA2 /* MoviesAssembler.swift in Sources */,
 				3822572622A62396003B9E7B /* FSPagerViewObjcCompat.m in Sources */,

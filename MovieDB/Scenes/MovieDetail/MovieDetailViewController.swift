@@ -65,7 +65,8 @@ final class MovieDetailViewController: UIViewController, BindableType {
             loadTrigger: Driver.just(()),
             showCastDetailTrigger: showCastDetailTrigger.asDriverOnErrorJustComplete(),
             backScreenTrigger: backButton.rx.tap.asDriverOnErrorJustComplete(),
-            showReviewsTrigger: showReviewsButton.rx.tap.asDriverOnErrorJustComplete()
+            showReviewsTrigger: showReviewsButton.rx.tap.asDriverOnErrorJustComplete(),
+            playTrailerTrigger: trailerButton.rx.tap.asDriverOnErrorJustComplete()
         )
         
         let output = viewModel.transform(input)
@@ -95,6 +96,10 @@ final class MovieDetailViewController: UIViewController, BindableType {
             .disposed(by: rx.disposeBag)
         
         output.showReviews
+            .drive()
+            .disposed(by: rx.disposeBag)
+        
+        output.playTrailer
             .drive()
             .disposed(by: rx.disposeBag)
     }

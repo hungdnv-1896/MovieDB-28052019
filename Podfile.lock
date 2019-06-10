@@ -49,6 +49,7 @@ PODS:
   - SDWebImage/Core (5.0.0)
   - Then (2.4.0)
   - Validator (3.0.2)
+  - YoutubePlayer-in-WKWebView (0.2.5)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0 (= 2.3)
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - SDWebImage (= 5.0)
   - Then (= 2.4)
   - Validator (= 3.0.2)
+  - YoutubePlayer-in-WKWebView (~> 0.2.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -94,6 +96,7 @@ SPEC REPOS:
     - SDWebImage
     - Then
     - Validator
+    - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
@@ -119,7 +122,8 @@ SPEC CHECKSUMS:
   SDWebImage: 5de80a0302de9e377e62f47d2fa1304efff0e55f
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
   Validator: bf211c1d71b3f910d230c09c70e62429d0fef63a
+  YoutubePlayer-in-WKWebView: 4dad12b3ece938a6456fa4374df78942f88b485a
 
-PODFILE CHECKSUM: 665a74a4d94d5446c24d4250ba71c0b799abe378
+PODFILE CHECKSUM: fa7fcc3272b9a49a2b16658e52da86532febd364
 
 COCOAPODS: 1.6.1

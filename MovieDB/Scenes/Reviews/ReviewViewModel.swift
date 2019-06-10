@@ -1,5 +1,5 @@
 //
-//  ReviewModel.swift
+//  ReviewViewModel.swift
 //  MovieDB
 //
 //  Created by Nguyen Hung on 6/8/19.

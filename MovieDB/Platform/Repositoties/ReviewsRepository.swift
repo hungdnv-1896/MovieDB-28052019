@@ -8,7 +8,7 @@
 
 protocol ReviewsRepositoryType {
     func getReviewList(id: Int,
-                      page: Int) -> Observable<PagingInfo<Review>>
+                       page: Int) -> Observable<PagingInfo<Review>>
 }
 
 final class ReviewsRepository: ReviewsRepositoryType {

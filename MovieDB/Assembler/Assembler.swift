@@ -17,7 +17,8 @@ protocol Assembler: class,
     SearchMovieAssemler,
     MovieDetailAssemler,
     CastDetailAssembler,
-    ReviewsMovieAssembler {
+    ReviewsMovieAssembler,
+    VideoPlayerAssembler {
 }
 
 final class DefaultAssembler: Assembler {
