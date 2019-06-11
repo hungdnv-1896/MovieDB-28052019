@@ -18,8 +18,8 @@ extension FavoriteAssembler {
         let vc = FavoriteViewController.instantiate()
         let favoriteTabbarItem = UITabBarItem(title: "Favorite", image: UIImage(named: "favorite"), tag: 0)
         vc.tabBarItem = favoriteTabbarItem
-//        let vm: MoviesViewModel = resolve(navigationController: navigationController)
-//        vc.bindViewModel(to: vm)
+        let vm: FavoriteViewModel = resolve(navigationController: navigationController)
+        vc.bindViewModel(to: vm)
         return vc
     }
     

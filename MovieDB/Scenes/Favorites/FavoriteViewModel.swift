@@ -14,15 +14,45 @@ struct FavoriteViewModel {
 extension FavoriteViewModel: ViewModelType {
     struct Input {
         let loadTrigger: Driver<Void>
+        let reloadTrigger: Driver<Void>
+        let selectMovieTrigger: Driver<IndexPath>
+        let deleteFavoriteTrigger: Driver<Movie>
     }
     
     struct Output {
-        let toMain: Driver<Void>
+        let listMovie: Driver<[Movie]>
+        let selectMovie: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
-        let toMain = input.loadTrigger
         
-        return Output(toMain: toMain)
+        let deleteFavorite = input.deleteFavoriteTrigger
+            .do(onNext: { (movie) in
+                self.useCase.deleteMovie(id: movie.id)
+            })
+            .mapToVoid()
+
+        let listMovie = Driver.merge(input.loadTrigger, input.reloadTrigger, deleteFavorite)
+            .flatMap { _ -> Driver<[Movie]> in
+                var movies = [Movie]()
+                let movieEntities = self.useCase.getListFavorite()
+                for entity in movieEntities {
+                    let movie = entity.toModel()
+                    movies.append(movie)
+                }
+                return Driver.just(movies)
+        }
+        
+        let selectedMovie = input.selectMovieTrigger
+            .withLatestFrom(listMovie) {
+                return $1[$0.row]
+            }
+            .do(onNext: { (movie) in
+                self.navigator.toMovieDetail(movie: movie)
+            })
+            .mapToVoid()
+
+        return Output(listMovie: listMovie,
+                      selectMovie: selectedMovie)
     }
 }
