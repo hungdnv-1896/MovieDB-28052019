@@ -6,26 +6,19 @@
 //  Copyright © 2019 nguyen.van.hungd. All rights reserved.
 //
 
-import Realm
-import RealmSwift
-
 protocol MovieDetailUseCaseType {
     func getMovieDetail(movieId: Int) -> Observable<Movie>
-    func addMovieToFavorite(movie: Movie)
+    func addMovieFavorite(_ movie: Movie) -> Observable<Void>
 }
 
 struct MovieDetailUseCase: MovieDetailUseCaseType {
-    let movieDetailRepository: MovieDetailRepositoryType
+    let movieRepository: MovieRepositoryType
     
     func getMovieDetail(movieId: Int) -> Observable<Movie> {
-        return movieDetailRepository.getMovieDetail(id: movieId)
+        return movieRepository.getMovieDetail(id: movieId)
     }
     
-    func addMovieToFavorite(movie: Movie) {
-        let movieEntity = movie.toEntity()
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(movieEntity, update: true)
-        }
+    func addMovieFavorite(_ movie: Movie) -> Observable<Void> {
+        return movieRepository.addMovieFavorite(movie)
     }
 }

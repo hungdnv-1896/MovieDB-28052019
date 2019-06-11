@@ -59,13 +59,3 @@ extension Movie: Mappable {
         videos <- map["videos.results"]
     }
 }
-
-extension Movie {
-    func toEntity() -> MovieEntity {
-        let entity = MovieEntity()
-        entity.id = self.id
-        entity.title = self.title
-        entity.posterPath = self.posterPath
-        return entity
-    }
-}

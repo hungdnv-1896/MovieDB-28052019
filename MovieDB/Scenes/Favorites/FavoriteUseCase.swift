@@ -6,26 +6,26 @@
 //  Copyright © 2019 nguyen.van.hungd. All rights reserved.
 //
 
-import RealmSwift
-import Realm
-
 protocol FavoriteUseCaseType {
-    func getListFavorite() -> Results<MovieEntity>
-    func deleteMovie(id: Int)
+    func getMovieFavoriteList() -> Observable<PagingInfo<MovieFavorite>>
+    func loadMoreMovieFavoriteList(page: Int) -> Observable<PagingInfo<MovieFavorite>>
+    func delete(_ movie: MovieFavorite) -> Observable<Void>
 }
 
 struct FavoriteUseCase: FavoriteUseCaseType {
-    func getListFavorite() -> Results<MovieEntity> {
-        let realm = try! Realm()
-        let movies = realm.objects(MovieEntity.self)
-        return movies
+    let movieRepository: MovieRepositoryType
+    
+    func getMovieFavoriteList() -> Observable<PagingInfo<MovieFavorite>> {
+        return movieRepository
+            .getMovieFavorites()
+            .map { PagingInfo(page: 1, items: $0) }
     }
     
-    func deleteMovie(id: Int) {
-        let realm = try! Realm()
-        let objectsToDelete = realm.objects(MovieEntity.self).filter { $0.id == id }
-        try! realm.write {
-            realm.delete(objectsToDelete)
-        }
+    func loadMoreMovieFavoriteList(page: Int) -> Observable<PagingInfo<MovieFavorite>> {
+        return Observable.empty()
+    }
+    
+    func delete(_ movie: MovieFavorite) -> Observable<Void> {
+        return movieRepository.delete(movie)
     }
 }

@@ -75,9 +75,13 @@ extension MovieDetailViewModel: ViewModelType {
             .mapToVoid()
         
         let addFavorite = input.addFavoriteTrigger
-            .do(onNext: {
-                self.useCase.addMovieToFavorite(movie: self.movie)
-            })
+            .flatMapLatest { _ -> Driver<Movie> in
+                return movieDetail
+            }
+            .flatMap { movie -> Driver<Void> in
+                return self.useCase.addMovieFavorite(movie)
+                    .asDriverOnErrorJustComplete()
+            }
         
         return Output(movieDetail: movieDetail,
                       castList: castList,

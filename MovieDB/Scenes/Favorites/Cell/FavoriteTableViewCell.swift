@@ -15,9 +15,9 @@ final class FavoriteTableViewCell: UITableViewCell, NibReusable {
     
     var handleDeleteFavorite: (() -> Void)?
     
-    func bindingCell(_ movieViewModel: MovieViewModel?) {
-        nameLabel.text = movieViewModel?.name ?? ""
-        posterImage.sd_setImage(with: movieViewModel?.posterImageURL, completed: nil)
+    func bindingCell(_ movieFavoriteViewModel: MovieFavoriteViewModel?) {
+        nameLabel.text = movieFavoriteViewModel?.title ?? ""
+        posterImage.sd_setImage(with: movieFavoriteViewModel?.posterImageURL, completed: nil)
     }
     
     @IBAction func deleteButton(_ sender: Any) {

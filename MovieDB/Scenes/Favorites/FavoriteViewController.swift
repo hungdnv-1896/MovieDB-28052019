@@ -10,22 +10,16 @@ import Foundation
 
 final class FavoriteViewController: UIViewController, BindableType {
     
-    @IBOutlet weak var tableView: UITableView!
-    
-    private let refreshControl = UIRefreshControl()
+    @IBOutlet weak var tableView: RefreshTableView!
     
     var viewModel: FavoriteViewModel!
     
     fileprivate var reloadDataTrigger = PublishSubject<Void>()
-    fileprivate var deleteFavoriteTrigger = PublishSubject<Movie>()
+    fileprivate var deleteFavoriteTrigger = PublishSubject<MovieFavorite>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,55 +31,74 @@ final class FavoriteViewController: UIViewController, BindableType {
     }
     
     private func configView() {
-        title = "Favorite"
-        refreshControl.do {
-            $0.tintColor = UIColor.lightGray
-            $0.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        }
+        title = "Favorites"
         tableView.do {
             $0.rowHeight = 150
             $0.register(cellType: FavoriteTableViewCell.self)
-            if #available(iOS 10.0, *) {
-                $0.refreshControl = refreshControl
-            } else {
-                $0.addSubview(refreshControl)
-            }
         }
         tableView.rx
             .setDelegate(self)
             .disposed(by: rx.disposeBag)
     }
     
-    @objc private func refreshData() {
-        reloadDataTrigger.onNext(())
-        refreshControl.endRefreshing()
-    }
-    
     func bindViewModel() {
         let input = FavoriteViewModel.Input(
             loadTrigger: Driver.just(()),
-            reloadTrigger: reloadDataTrigger.asDriverOnErrorJustComplete(),
+            reloadTrigger: tableView.loadMoreTopTrigger,
+            loadMoreTrigger: tableView.loadMoreBottomTrigger,
             selectMovieTrigger: tableView.rx.itemSelected.asDriver(),
             deleteFavoriteTrigger: deleteFavoriteTrigger.asDriverOnErrorJustComplete()
         )
         
         let output = viewModel.transform(input)
         
-        output.listMovie
-            .drive(tableView.rx.items) { tableView, index, movie in
+        output.movieFavoriteList
+            .drive(tableView.rx.items) { [unowned self] tableView, index, movieFavorite in
                 return tableView.dequeueReusableCell(
                     for: IndexPath(row: index, section: 0),
                     cellType: FavoriteTableViewCell.self)
                     .then {
-                        $0.bindingCell(MovieViewModel(movie: movie))
+                        $0.bindingCell(MovieFavoriteViewModel(movieFavorite: movieFavorite))
                         $0.handleDeleteFavorite = {
-                            self.deleteFavoriteTrigger.onNext(movie)
+                            self.deleteFavoriteTrigger.onNext(movieFavorite)
                         }
                     }
             }
             .disposed(by: rx.disposeBag)
         
-        output.selectMovie
+        output.selectedMovie
+            .drive()
+            .disposed(by: rx.disposeBag)
+        
+        output.error
+            .drive(rx.error)
+            .disposed(by: rx.disposeBag)
+        
+        output.loading
+            .drive(rx.isLoading)
+            .disposed(by: rx.disposeBag)
+        
+        output.refreshing
+            .drive(tableView.loadingMoreTop)
+            .disposed(by: rx.disposeBag)
+        
+        output.loadingMore
+            .drive(tableView.loadingMoreBottom)
+            .disposed(by: rx.disposeBag)
+        
+        output.fetchItems
+            .drive()
+            .disposed(by: rx.disposeBag)
+        
+        output.selectedMovie
+            .drive()
+            .disposed(by: rx.disposeBag)
+        
+        output.isEmptyData
+            .drive(tableView.isEmptyData)
+            .disposed(by: rx.disposeBag)
+        
+        output.deleteFavorite
             .drive()
             .disposed(by: rx.disposeBag)
     }

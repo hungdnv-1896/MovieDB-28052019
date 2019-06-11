@@ -24,11 +24,6 @@ PODS:
     - RxSwift (~> 4.3)
   - ObjectMapper (3.3.0)
   - OrderedSet (3.0.0)
-  - Realm (3.15.0):
-    - Realm/Headers (= 3.15.0)
-  - Realm/Headers (3.15.0)
-  - RealmSwift (3.15.0):
-    - Realm (= 3.15.0)
   - Reusable (4.0.4):
     - Reusable/Storyboard (= 4.0.4)
     - Reusable/View (= 4.0.4)
@@ -68,7 +63,6 @@ DEPENDENCIES:
   - "NSObject+Rx (= 4.4)"
   - ObjectMapper (= 3.3)
   - OrderedSet (= 3.0)
-  - RealmSwift
   - Reusable (= 4.0.4)
   - RxBlocking (= 4.5)
   - RxDataSources (= 3.1)
@@ -92,8 +86,6 @@ SPEC REPOS:
     - "NSObject+Rx"
     - ObjectMapper
     - OrderedSet
-    - Realm
-    - RealmSwift
     - Reusable
     - RxAlamofire
     - RxAtomic
@@ -120,8 +112,6 @@ SPEC CHECKSUMS:
   "NSObject+Rx": 3291262e7eddc434b6c98d1e85dedc4faa451ace
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   OrderedSet: b990e16dcf6b79f1d3826b996b1eb613c696eec0
-  Realm: 9b834e1be6062f544805252c812348872dc5d4ed
-  RealmSwift: 8a41886f8ab6efef9eb8df97de2f2bb911561a79
   Reusable: 7fc772097df3e5fc86f59d8a7af9708e49b5ff55
   RxAlamofire: ed65f451f5a9a59419b0b9e705043dc01410edd9
   RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
@@ -134,6 +124,6 @@ SPEC CHECKSUMS:
   Validator: bf211c1d71b3f910d230c09c70e62429d0fef63a
   YoutubePlayer-in-WKWebView: 4dad12b3ece938a6456fa4374df78942f88b485a
 
-PODFILE CHECKSUM: a5814ed0eddcf6872926f346bc4f7ed5aa79b7b4
+PODFILE CHECKSUM: fa7fcc3272b9a49a2b16658e52da86532febd364
 
 COCOAPODS: 1.6.1

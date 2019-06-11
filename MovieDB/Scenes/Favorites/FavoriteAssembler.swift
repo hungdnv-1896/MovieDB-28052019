@@ -24,7 +24,8 @@ extension FavoriteAssembler {
     }
     
     func resolve(navigationController: UINavigationController) -> FavoriteViewModel {
-        return FavoriteViewModel(navigator: resolve(navigationController: navigationController), useCase: resolve())
+        return FavoriteViewModel(navigator: resolve(navigationController: navigationController),
+                                 useCase: resolve())
     }
 }
 
@@ -34,6 +35,6 @@ extension FavoriteAssembler where Self: DefaultAssembler {
     }
     
     func resolve() -> FavoriteUseCaseType {
-        return FavoriteUseCase()
+        return FavoriteUseCase(movieRepository: resolve())
     }
 }

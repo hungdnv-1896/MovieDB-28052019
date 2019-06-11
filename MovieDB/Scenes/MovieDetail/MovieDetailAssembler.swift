@@ -40,6 +40,6 @@ extension MovieDetailAssemler where Self: DefaultAssembler {
     }
     
     func resolve() -> MovieDetailUseCaseType {
-        return MovieDetailUseCase(movieDetailRepository: resolve())
+        return MovieDetailUseCase(movieRepository: resolve())
     }
 }

@@ -33,7 +33,6 @@ target 'MovieDB' do
     pod 'ActionSheetPicker-3.0', '2.3'
     pod 'Cosmos', '~> 19.0'
     pod 'YoutubePlayer-in-WKWebView', '~> 0.2.0'
-    pod 'RealmSwift'
 
   target 'MovieDBTests' do
     inherit! :search_paths
