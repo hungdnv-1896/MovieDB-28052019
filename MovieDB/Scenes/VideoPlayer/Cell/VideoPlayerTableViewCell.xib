@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="282" id="KGk-i7-Jjw" customClass="VideoPlayerTableViewCell" customModule="MovieDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="282"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="281.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HtG-MN-hQb" customClass="WKYTPlayerView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="HtG-MN-hQb" secondAttribute="height" multiplier="16:9" id="qmR-eO-u4c"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DM7-an-nlB">
+                        <rect key="frame" x="10" y="190" width="300" height="81.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="DM7-an-nlB" secondAttribute="trailing" constant="10" id="2Ek-7c-bF8"/>
+                    <constraint firstItem="DM7-an-nlB" firstAttribute="top" secondItem="HtG-MN-hQb" secondAttribute="bottom" constant="10" id="9L5-NW-Kgd"/>
+                    <constraint firstItem="HtG-MN-hQb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="M8s-np-S2q"/>
+                    <constraint firstItem="DM7-an-nlB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="QiO-pd-uLa"/>
+                    <constraint firstAttribute="bottom" secondItem="DM7-an-nlB" secondAttribute="bottom" constant="10" id="nX7-Oh-uQb"/>
+                    <constraint firstItem="HtG-MN-hQb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="rpq-bB-F9F"/>
+                    <constraint firstAttribute="trailing" secondItem="HtG-MN-hQb" secondAttribute="trailing" id="wKJ-zI-6ZR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="nameLabel" destination="DM7-an-nlB" id="unz-og-4tZ"/>
+                <outlet property="playerView" destination="HtG-MN-hQb" id="9yK-fq-i4P"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="186.83035714285714"/>
+        </tableViewCell>
+    </objects>
+</document>

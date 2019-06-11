@@ -46,4 +46,8 @@ struct MovieViewModel {
     var voteAverage: Double {
         return movie.voteAverage
     }
+    
+    var videoList: [Video] {
+        return movie.videos
+    }
 }

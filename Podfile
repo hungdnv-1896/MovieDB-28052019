@@ -32,6 +32,7 @@ target 'MovieDB' do
     pod 'SDWebImage', '5.0'
     pod 'ActionSheetPicker-3.0', '2.3'
     pod 'Cosmos', '~> 19.0'
+    pod 'YoutubePlayer-in-WKWebView', '~> 0.2.0'
 
   target 'MovieDBTests' do
     inherit! :search_paths

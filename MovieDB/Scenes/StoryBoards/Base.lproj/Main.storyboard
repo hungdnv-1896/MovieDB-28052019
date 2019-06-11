@@ -151,7 +151,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbJ-5u-K5C">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="812.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="792.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qpA-qv-q3B">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
@@ -314,6 +314,7 @@
                                             <constraint firstItem="QAc-ad-7Pd" firstAttribute="trailing" secondItem="zDp-Nm-0XA" secondAttribute="trailing" id="ANU-fg-ANV"/>
                                             <constraint firstItem="7XO-M8-DAX" firstAttribute="top" secondItem="qpA-qv-q3B" secondAttribute="bottom" constant="-30" id="CBV-dL-aID"/>
                                             <constraint firstItem="QAc-ad-7Pd" firstAttribute="bottom" secondItem="zDp-Nm-0XA" secondAttribute="bottom" id="DCG-mo-oAt"/>
+                                            <constraint firstAttribute="bottom" secondItem="zDp-Nm-0XA" secondAttribute="bottom" constant="40" id="Iu4-hx-k05"/>
                                             <constraint firstAttribute="trailing" secondItem="qlu-mD-Iry" secondAttribute="trailing" constant="10" id="KUe-KG-gEE"/>
                                             <constraint firstItem="7XO-M8-DAX" firstAttribute="leading" secondItem="dbJ-5u-K5C" secondAttribute="leading" constant="10" id="Kdx-e3-O5x"/>
                                             <constraint firstItem="C74-7S-m6h" firstAttribute="centerY" secondItem="OCS-Gw-Kpz" secondAttribute="centerY" id="KoN-jZ-NUP"/>
@@ -329,7 +330,6 @@
                                             <constraint firstItem="qlu-mD-Iry" firstAttribute="leading" secondItem="dbJ-5u-K5C" secondAttribute="leading" constant="10" id="drC-hx-23o"/>
                                             <constraint firstItem="cBy-iI-bcf" firstAttribute="width" secondItem="7XO-M8-DAX" secondAttribute="width" id="eYd-J9-M9V"/>
                                             <constraint firstItem="C74-7S-m6h" firstAttribute="leading" secondItem="OCS-Gw-Kpz" secondAttribute="trailing" constant="5" id="fBo-zp-KTp"/>
-                                            <constraint firstAttribute="bottom" secondItem="zDp-Nm-0XA" secondAttribute="bottom" constant="60" id="fLA-nr-uwr"/>
                                             <constraint firstItem="CLW-rn-Mxk" firstAttribute="leading" secondItem="dbJ-5u-K5C" secondAttribute="leading" constant="10" id="fja-r2-EZR"/>
                                             <constraint firstAttribute="trailing" secondItem="gt3-K3-6Au" secondAttribute="trailing" constant="10" id="g4t-fC-gEX"/>
                                             <constraint firstAttribute="trailing" secondItem="qpA-qv-q3B" secondAttribute="trailing" id="hoV-xX-2fK"/>
@@ -597,6 +597,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbY-rx-TpJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3393" y="-699"/>
+        </scene>
+        <!--Video Player View Controller-->
+        <scene sceneID="Lkn-Db-yQV">
+            <objects>
+                <viewController storyboardIdentifier="VideoPlayerViewController" id="jEl-Ki-EsB" customClass="VideoPlayerViewController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mar-xx-JXm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Xx-CL-uib">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6Xx-CL-uib" firstAttribute="top" secondItem="cfc-zL-gSL" secondAttribute="top" id="LpD-ye-3bR"/>
+                            <constraint firstItem="cfc-zL-gSL" firstAttribute="trailing" secondItem="6Xx-CL-uib" secondAttribute="trailing" id="ZxT-kB-q2G"/>
+                            <constraint firstItem="cfc-zL-gSL" firstAttribute="bottom" secondItem="6Xx-CL-uib" secondAttribute="bottom" id="vfa-TP-aCb"/>
+                            <constraint firstItem="6Xx-CL-uib" firstAttribute="leading" secondItem="cfc-zL-gSL" secondAttribute="leading" id="yQF-n8-tgO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cfc-zL-gSL"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="6Xx-CL-uib" id="MsA-JC-CPn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aE3-Dk-3F4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4187" y="-689"/>
         </scene>
     </scenes>
     <resources>
