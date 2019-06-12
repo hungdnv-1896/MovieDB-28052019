@@ -8,7 +8,6 @@
 
 protocol RepositoriesAssembler {
     func resolve() -> MovieRepositoryType
-    func resolve() -> MovieDetailRepositoryType
     func resolve() -> CastDetailRepositoryType
     func resolve() -> ReviewsRepositoryType
     func resolve() -> VideoRepositoryType
@@ -17,10 +16,6 @@ protocol RepositoriesAssembler {
 extension RepositoriesAssembler where Self: DefaultAssembler {
     func resolve() -> MovieRepositoryType {
         return MovieRepository()
-    }
-    
-    func resolve() -> MovieDetailRepositoryType {
-        return MovieDetailRepository()
     }
     
     func resolve() -> CastDetailRepositoryType {

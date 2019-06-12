@@ -8,12 +8,17 @@
 
 protocol MovieDetailUseCaseType {
     func getMovieDetail(movieId: Int) -> Observable<Movie>
+    func addMovieFavorite(_ movie: Movie) -> Observable<Void>
 }
 
 struct MovieDetailUseCase: MovieDetailUseCaseType {
-    let movieDetailRepository: MovieDetailRepositoryType
+    let movieRepository: MovieRepositoryType
     
     func getMovieDetail(movieId: Int) -> Observable<Movie> {
-        return movieDetailRepository.getMovieDetail(id: movieId)
+        return movieRepository.getMovieDetail(id: movieId)
+    }
+    
+    func addMovieFavorite(_ movie: Movie) -> Observable<Void> {
+        return movieRepository.addMovieFavorite(movie)
     }
 }

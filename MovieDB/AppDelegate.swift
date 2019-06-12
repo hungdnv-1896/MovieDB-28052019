@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MagicalRecord
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,8 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         window = UIWindow()
+        setupCoreData()
         bindViewModel()
         return true
+    }
+    
+    private func setupCoreData() {
+        MagicalRecord.setupAutoMigratingCoreDataStack()
+        MagicalRecord.setLoggingLevel(MagicalRecordLoggingLevel.error)
     }
     
     private func bindViewModel() {
@@ -29,5 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         output.toMain
             .drive()
             .disposed(by: rx.disposeBag)
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        MagicalRecord.cleanUp()
     }
 }

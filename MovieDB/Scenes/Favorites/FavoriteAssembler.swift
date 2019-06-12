@@ -18,13 +18,14 @@ extension FavoriteAssembler {
         let vc = FavoriteViewController.instantiate()
         let favoriteTabbarItem = UITabBarItem(title: "Favorite", image: UIImage(named: "favorite"), tag: 0)
         vc.tabBarItem = favoriteTabbarItem
-//        let vm: MoviesViewModel = resolve(navigationController: navigationController)
-//        vc.bindViewModel(to: vm)
+        let vm: FavoriteViewModel = resolve(navigationController: navigationController)
+        vc.bindViewModel(to: vm)
         return vc
     }
     
     func resolve(navigationController: UINavigationController) -> FavoriteViewModel {
-        return FavoriteViewModel(navigator: resolve(navigationController: navigationController), useCase: resolve())
+        return FavoriteViewModel(navigator: resolve(navigationController: navigationController),
+                                 useCase: resolve())
     }
 }
 
@@ -34,6 +35,6 @@ extension FavoriteAssembler where Self: DefaultAssembler {
     }
     
     func resolve() -> FavoriteUseCaseType {
-        return FavoriteUseCase()
+        return FavoriteUseCase(movieRepository: resolve())
     }
 }

@@ -20,6 +20,7 @@ extension MovieDetailViewModel: ViewModelType {
         let backScreenTrigger: Driver<Void>
         let showReviewsTrigger: Driver<Void>
         let playTrailerTrigger: Driver<Void>
+        let addFavoriteTrigger: Driver<Void>
     }
     
     struct Output {
@@ -29,6 +30,7 @@ extension MovieDetailViewModel: ViewModelType {
         let showCastDetail: Driver<Void>
         let showReviews: Driver<Void>
         let playTrailer: Driver<Void>
+        let addFavorite: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -72,11 +74,21 @@ extension MovieDetailViewModel: ViewModelType {
             })
             .mapToVoid()
         
+        let addFavorite = input.addFavoriteTrigger
+            .flatMapLatest { _ -> Driver<Movie> in
+                return movieDetail
+            }
+            .flatMap { movie -> Driver<Void> in
+                return self.useCase.addMovieFavorite(movie)
+                    .asDriverOnErrorJustComplete()
+            }
+        
         return Output(movieDetail: movieDetail,
                       castList: castList,
                       backScreen: backScreen,
                       showCastDetail: showCastDetail,
                       showReviews: showReviews,
-                      playTrailer: playTrailer)
+                      playTrailer: playTrailer,
+                      addFavorite: addFavorite)
     }
 }
