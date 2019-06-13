@@ -19,7 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         window = UIWindow()
         setupCoreData()
-        bindViewModel()
+        if NSClassFromString("XCTest") != nil { // test
+            window?.rootViewController = UnitTestViewController()
+        } else {
+            bindViewModel()
+        }
         return true
     }
     
