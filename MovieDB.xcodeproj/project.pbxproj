@@ -26,6 +26,11 @@
 		380F639722B1F56700869DBF /* MoviesHeaderViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F639622B1F56700869DBF /* MoviesHeaderViewTests.swift */; };
 		380F639922B1F57D00869DBF /* CategoryCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F639822B1F57D00869DBF /* CategoryCellTests.swift */; };
 		380F639B22B1F58B00869DBF /* MovieCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F639A22B1F58B00869DBF /* MovieCellTests.swift */; };
+		380F63A022B221DB00869DBF /* CategoryNavigatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F639F22B221DB00869DBF /* CategoryNavigatorMock.swift */; };
+		380F63A222B221EF00869DBF /* CategoryUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F63A122B221EE00869DBF /* CategoryUseCaseMock.swift */; };
+		380F63A422B2220600869DBF /* CategoryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F63A322B2220600869DBF /* CategoryViewControllerTests.swift */; };
+		380F63A622B2221100869DBF /* CategoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F63A522B2221100869DBF /* CategoryViewModelTests.swift */; };
+		380F63A822B2222900869DBF /* MovieTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F63A722B2222900869DBF /* MovieTableViewCellTests.swift */; };
 		3815F6D722A9E9FA00C5BC24 /* CastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3815F6D622A9E9FA00C5BC24 /* CastViewModel.swift */; };
 		3815F6DB22A9EB6000C5BC24 /* CastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3815F6D922A9EB6000C5BC24 /* CastCell.swift */; };
 		3815F6DC22A9EB6000C5BC24 /* CastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3815F6DA22A9EB6000C5BC24 /* CastCell.xib */; };
@@ -190,6 +195,11 @@
 		380F639622B1F56700869DBF /* MoviesHeaderViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesHeaderViewTests.swift; sourceTree = "<group>"; };
 		380F639822B1F57D00869DBF /* CategoryCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCellTests.swift; sourceTree = "<group>"; };
 		380F639A22B1F58B00869DBF /* MovieCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellTests.swift; sourceTree = "<group>"; };
+		380F639F22B221DB00869DBF /* CategoryNavigatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNavigatorMock.swift; sourceTree = "<group>"; };
+		380F63A122B221EE00869DBF /* CategoryUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryUseCaseMock.swift; sourceTree = "<group>"; };
+		380F63A322B2220600869DBF /* CategoryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewControllerTests.swift; sourceTree = "<group>"; };
+		380F63A522B2221100869DBF /* CategoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTests.swift; sourceTree = "<group>"; };
+		380F63A722B2222900869DBF /* MovieTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCellTests.swift; sourceTree = "<group>"; };
 		3815F6D622A9E9FA00C5BC24 /* CastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastViewModel.swift; sourceTree = "<group>"; };
 		3815F6D922A9EB6000C5BC24 /* CastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCell.swift; sourceTree = "<group>"; };
 		3815F6DA22A9EB6000C5BC24 /* CastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastCell.xib; sourceTree = "<group>"; };
@@ -368,6 +378,7 @@
 		380F637822B1DDE700869DBF /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				380F639E22B221A200869DBF /* Category */,
 				380F638922B1E02800869DBF /* Movies */,
 				380F638022B1DE2A00869DBF /* Main */,
 				380F637922B1DDED00869DBF /* App */,
@@ -409,6 +420,18 @@
 				380F639A22B1F58B00869DBF /* MovieCellTests.swift */,
 			);
 			path = Movies;
+			sourceTree = "<group>";
+		};
+		380F639E22B221A200869DBF /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				380F639F22B221DB00869DBF /* CategoryNavigatorMock.swift */,
+				380F63A122B221EE00869DBF /* CategoryUseCaseMock.swift */,
+				380F63A322B2220600869DBF /* CategoryViewControllerTests.swift */,
+				380F63A522B2221100869DBF /* CategoryViewModelTests.swift */,
+				380F63A722B2222900869DBF /* MovieTableViewCellTests.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		3815F6D822A9EB3600C5BC24 /* Cell */ = {
@@ -1292,11 +1315,15 @@
 				380F637D22B1DE1D00869DBF /* AppUseCaseMock.swift in Sources */,
 				380F638622B1DEA700869DBF /* MainViewControllerTests.swift in Sources */,
 				380F639322B1E7D100869DBF /* TestError.swift in Sources */,
+				380F63A622B2221100869DBF /* CategoryViewModelTests.swift in Sources */,
 				380F638822B1DEC500869DBF /* MainViewModelTests.swift in Sources */,
+				380F63A822B2222900869DBF /* MovieTableViewCellTests.swift in Sources */,
+				380F63A022B221DB00869DBF /* CategoryNavigatorMock.swift in Sources */,
 				3821A90A229CC374007002B3 /* MovieDBTests.swift in Sources */,
 				380F638222B1DE7200869DBF /* MainNavigatorMock.swift in Sources */,
 				380F639B22B1F58B00869DBF /* MovieCellTests.swift in Sources */,
 				380F639722B1F56700869DBF /* MoviesHeaderViewTests.swift in Sources */,
+				380F63A422B2220600869DBF /* CategoryViewControllerTests.swift in Sources */,
 				380F638D22B1E2A400869DBF /* MoviesUseCaseMock.swift in Sources */,
 				380F639122B1E44D00869DBF /* MoviesViewModelTests.swift in Sources */,
 				380F638B22B1E04400869DBF /* MoviesNavigatorMock.swift in Sources */,
@@ -1305,6 +1332,7 @@
 				380F638422B1DE7F00869DBF /* MainUseCaseMock.swift in Sources */,
 				380F637522B1DC5200869DBF /* VideoTests.swift in Sources */,
 				380F637E22B1DE1D00869DBF /* AppViewModelTests.swift in Sources */,
+				380F63A222B221EF00869DBF /* CategoryUseCaseMock.swift in Sources */,
 				380F637322B1DBAD00869DBF /* ReviewTests.swift in Sources */,
 				380F637F22B1DE1D00869DBF /* AppNavigatorMock.swift in Sources */,
 			);
