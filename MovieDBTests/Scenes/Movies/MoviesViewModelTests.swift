@@ -90,10 +90,6 @@ final class MoviesViewModelTests: XCTestCase {
     func test_selectedMovieTriggerInvoked_toMovieDetail() {
         // act
         loadTrigger.onNext(())
-//        let movie = Movie().with {
-//            $0.id = 111
-//            $0.title = "MOVIE"
-//        }
         selectedMovieTrigger.onNext(Movie())
 
         // assert

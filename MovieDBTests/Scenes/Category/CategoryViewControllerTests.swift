@@ -1,5 +1,5 @@
 //
-//  MoviesViewControllerTests.swift
+//  CategoryViewControllerTests.swift
 //  MovieDBTests
 //
 //  Created by nguyen.van.hungd on 6/13/19.
@@ -10,18 +10,16 @@
 import XCTest
 import Reusable
 
-final class MoviesViewControllerTests: XCTestCase {
-    
-    private var viewController: MoviesViewController!
+final class CategoryViewControllerTests: XCTest {
+    private var viewController: CategoryViewController!
     
     override func setUp() {
         super.setUp()
-        viewController = MoviesViewController.instantiate()
+        viewController = CategoryViewController.instantiate()
     }
     
     func test_ibOutlets() {
         _ = viewController.view
         XCTAssertNotNil(viewController.tableView)
     }
-    
 }
