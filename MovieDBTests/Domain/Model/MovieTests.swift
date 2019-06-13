@@ -24,7 +24,6 @@ final class MovieTests: XCTestCase {
         XCTAssertEqual(movie?.id, json["id"] as? Int)
         XCTAssertEqual(movie?.title, json["title"] as? String)
         XCTAssertEqual(movie?.overview, json["overview"] as? String)
-        XCTAssertEqual(movie?.vote_count, json["vote_count"] as? Int)
+        XCTAssertEqual(movie?.voteCount, json["vote_count"] as? Int)
     }
-    
 }
