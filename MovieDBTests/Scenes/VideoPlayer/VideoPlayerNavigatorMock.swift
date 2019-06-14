@@ -6,4 +6,8 @@
 //  Copyright © 2019 nguyen.van.hungd. All rights reserved.
 //
 
-import Foundation
+@testable import MovieDB
+
+final class VideoPlayerNavigatorMock: VideoPlayerNavigatorType {
+    
+}

@@ -105,7 +105,7 @@ final class ReviewsViewModelTests: XCTestCase {
         XCTAssertFalse(useCase.getReviewListCalled)
     }
     
-    func test_reloadTriggerInvoked_notGetMovieListIfStillReloading() {
+    func test_reloadTriggerInvoked_notGetReviewListIfStillReloading() {
         // arrange
         let getReviewListReturnValue = PublishSubject<PagingInfo<Review>>()
         useCase.getReviewListReturnValue = getReviewListReturnValue

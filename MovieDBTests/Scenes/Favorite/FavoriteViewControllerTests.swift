@@ -1,5 +1,5 @@
 //
-//  VideoPlayerViewControllerTests.swift
+//  FavoriteViewControllerTests.swift
 //  MovieDBTests
 //
 //  Created by nguyen.van.hungd on 6/14/19.
@@ -9,16 +9,16 @@
 @testable import MovieDB
 import XCTest
 
-final class VideoPlayerViewControllerTests: XCTest {
-    private var viewController: VideoPlayerViewController!
+final class FavoriteViewControllerTests: XCTest {
+    private var viewController: FavoriteViewController!
     
     override func setUp() {
         super.setUp()
-        viewController = VideoPlayerViewController.instantiate()
+        viewController = FavoriteViewController.instantiate()
     }
     
     func test_ibOutlets() {
-        _ = viewController.viewModel
+        _ = viewController.view
         XCTAssertNotNil(viewController.tableView)
     }
 }

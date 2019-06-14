@@ -6,4 +6,20 @@
 //  Copyright © 2019 nguyen.van.hungd. All rights reserved.
 //
 
-import Foundation
+@testable import MovieDB
+import RxSwift
+
+final class VideoPlayerUseCaseMock: VideoPlayerUseCaseType {
+    
+    var getVideoListCalled = false
+    
+    var getVideoListReturnValue: Observable<[Video]> = {
+        let items = [Video().with { $0.id = "1" }]
+        return Observable.just(items)
+    }()
+    
+    func getVideoList(movieId: Int) -> Observable<[Video]> {
+        getVideoListCalled = true
+        return getVideoListReturnValue
+    }
+}

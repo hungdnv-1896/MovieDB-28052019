@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  FavoriteTableViewCellTests.swift
 //  MovieDBTests
 //
 //  Created by nguyen.van.hungd on 6/14/19.
@@ -9,17 +9,18 @@
 import XCTest
 @testable import MovieDB
 
-final class VideoPlayerTableViewCellTests: XCTestCase {
-    var cell: VideoPlayerTableViewCell!
+final class FavoriteTableViewCellTests: XCTestCase {
+    var cell: FavoriteTableViewCell!
     
     override func setUp() {
         super.setUp()
-        cell = VideoPlayerTableViewCell.loadFromNib()
+        cell = FavoriteTableViewCell.loadFromNib()
     }
     
     func test_ibOutlets() {
         XCTAssertNotNil(cell)
+        XCTAssertNotNil(cell.posterImage)
         XCTAssertNotNil(cell.nameLabel)
-        XCTAssertNotNil(cell.playerView)
+        XCTAssertNotNil(cell.deleteButton(UIButton()))
     }
 }
